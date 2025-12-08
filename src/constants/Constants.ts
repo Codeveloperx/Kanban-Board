@@ -1,0 +1,4 @@
+export const KEY_CREATE_BOARD = "CREATE_BOARD";
+export const KEY_UPDATE_BOARD = "UPDATE_BOARD";
+export const KEY_DELETE_BOARD = "DELETE_BOARD";
+export const KEY_SELECT_BOARD = "SELECT_BOARD";

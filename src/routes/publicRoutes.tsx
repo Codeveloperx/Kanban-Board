@@ -1,5 +1,5 @@
-import type { RouteObject } from "react-router-dom";
 import { ROUTES } from "./routes.config";
+import type { RouteObject } from "react-router-dom";
 
 export const publicRoutes: RouteObject[] = [
   {

@@ -4,7 +4,7 @@ export interface List {
   color?: string;
   position: number;
   collapsed: boolean;
-  boardId: string;
+  // boardId?: string;
 
   tasks: TaskID[];
 }

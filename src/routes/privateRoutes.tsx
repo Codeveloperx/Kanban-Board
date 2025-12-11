@@ -1,5 +1,5 @@
-import { Outlet, type RouteObject } from "react-router-dom";
 import { ROUTES } from "./routes.config";
+import { Outlet, type RouteObject } from "react-router-dom";
 
 export const privateRoutes: RouteObject[] = [
   {

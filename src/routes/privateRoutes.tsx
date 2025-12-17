@@ -1,14 +1,11 @@
+import DashBoardLayout from "../layouts/DashboardLayout";
 import { ROUTES } from "./routes.config";
-import { Outlet, type RouteObject } from "react-router-dom";
+import { type RouteObject } from "react-router-dom";
 
 export const privateRoutes: RouteObject[] = [
   {
     path: ROUTES.HOME,
-    element: (
-      <main className="flex-1">
-        <Outlet />
-      </main>
-    ),
+    Component: DashBoardLayout,
     children: [
       {
         index: true,

@@ -1,4 +1,4 @@
-import DashBoardLayout from "../layouts/DashboardLayout";
+import DashBoardLayout from "../layouts/DashBoardLayout";
 import { ROUTES } from "./routes.config";
 import { type RouteObject } from "react-router-dom";
 

@@ -1,9 +1,11 @@
-function App() {
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/index";
+import { BoardProvider } from "./context/BoardProvider";
+
+export default function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold">Hello world!</h1>
-    </div>
+    <BoardProvider>
+      <RouterProvider router={router} />
+    </BoardProvider>
   );
 }
-
-export default App;

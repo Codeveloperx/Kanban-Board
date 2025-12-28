@@ -3,10 +3,10 @@ import { useBoard } from "../../hooks/useBoard";
 import { ActionBoard } from "../../types/BoardState";
 
 interface HeaderProps {
-  showNewBoard?: boolean;
+  showAction?: boolean;
 }
 
-const Header = ({ showNewBoard = false }: HeaderProps) => {
+const Header = ({ showAction = false }: HeaderProps) => {
   const { dispatch } = useBoard();
   return (
     <header className="h-14 bg-white border-b border-gray-200 px-6 flex items-center justify-between">
@@ -14,7 +14,7 @@ const Header = ({ showNewBoard = false }: HeaderProps) => {
         <span className="text-xl font-bold text-gray-900">Kanban Board</span>
       </div>
       <div className="flex items-center gap-4">
-        {showNewBoard && (
+        {showAction && (
           <button
             className="flex items-center space-x-1 cursor-pointer bg-gray-700 text-white px-3 py-1 rounded shadow hover:bg-gray-800"
             onClick={() =>

@@ -1,11 +1,11 @@
 import { Carousel } from "../../components/carousel/Carousel";
+import { markHomeAsSeen } from "../../routes/utils/onBoarding";
+import { NavLink } from "react-router-dom";
 import im1 from "../../assets/undraw_project_1.svg";
 import im2 from "../../assets/undraw_project_2.svg";
 import im3 from "../../assets/undraw_project_3.svg";
 import im4 from "../../assets/undraw_project_4.svg";
 import im5 from "../../assets/undraw_project_5.svg";
-import { markHomeAsSeen } from "../../routes/guard";
-import { NavLink } from "react-router-dom";
 
 const images = [im1, im2, im3, im4, im5];
 

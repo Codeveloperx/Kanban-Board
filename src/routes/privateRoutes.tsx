@@ -1,9 +1,10 @@
-import DashBoardLayout from "../layouts/DashBoardLayout";
-import OnBoardingLayout from "../layouts/OnBoardingLayout";
+import { OnboardingGuard } from "./guards/onBoardingGuard";
+import { ROUTES } from "./routes";
 import Boards from "../pages/boards/Boards";
+import DashBoardLayout from "../layouts/DashBoardLayout";
 import Home from "../pages/home/Home";
-import OnboardingGuard from "./onBoardingGuard";
-import { ROUTES } from "./routes.config";
+import OnBoardingLayout from "../layouts/OnBoardingLayout";
+
 import type { RouteObject } from "react-router-dom";
 
 export const privateRoutes: RouteObject[] = [

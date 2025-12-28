@@ -6,6 +6,10 @@ import {
   type BoardAction,
   type BoardState,
 } from "../../types/BoardState";
+import { formatDate } from "../../utils/formatDate";
+import { COLORS } from "../../utils/color";
+
+const date = new Date();
 
 export const boardReducer = (
   state: BoardState,
@@ -16,8 +20,9 @@ export const boardReducer = (
       const newBoard: Board = {
         id: UUID(),
         name: action.payload.title,
-        createdAt: new Date().toString(),
-        updatedAt: new Date().toString(),
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        createdAt: formatDate(date),
+        updatedAt: formatDate(date),
         list: createList(),
       };
 

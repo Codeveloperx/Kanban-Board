@@ -7,5 +7,5 @@ export const KEY_SELECT_BOARD = "SELECT_BOARD";
 //NAVIGATION KEYS
 export const KEY_NAV_HOME = "Home";
 export const KEY_NAV_CHATS = "Chats";
-export const KEY_NAV_PROJECTS = "Proyectos";
+export const KEY_NAV_BOARDS = "Boards";
 export const KEY_NAV_ARTIFACTS = "Artefactos";

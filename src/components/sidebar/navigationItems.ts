@@ -8,9 +8,8 @@ import {
 
 import {
   KEY_NAV_ARTIFACTS,
+  KEY_NAV_BOARDS,
   KEY_NAV_CHATS,
-  KEY_NAV_HOME,
-  KEY_NAV_PROJECTS,
 } from "../../constants/Constants";
 
 interface NavigationItem {
@@ -20,9 +19,9 @@ interface NavigationItem {
 }
 
 export const navigationItems: NavigationItem[] = [
-  { icon: Home, label: KEY_NAV_HOME, path: "/" },
+  // { icon: Home, label: KEY_NAV_HOME, path: "/", visible: hasSeenHome() },
   //Example nevigation items
+  { icon: FolderKanban, label: KEY_NAV_BOARDS, path: "/boards" },
   { icon: MessageSquare, label: KEY_NAV_CHATS, path: "/chats" },
-  { icon: FolderKanban, label: KEY_NAV_PROJECTS, path: "/projects" },
   { icon: Package, label: KEY_NAV_ARTIFACTS, path: "/artifacts" },
 ];

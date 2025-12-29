@@ -1,4 +1,4 @@
-import { ROUTES } from "./routes.config";
+import { ROUTES } from "./routes";
 import type { RouteObject } from "react-router-dom";
 
 export const publicRoutes: RouteObject[] = [

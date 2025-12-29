@@ -22,7 +22,7 @@ export const Carousel = ({ images, interval = 4000 }: CarouselProps) => {
     <div className="relative w-full h-full flex items-center justify-center">
       {images.map((src, index) => (
         <img
-          key={index}
+          key={src}
           src={src}
           alt={`Slide ${index + 1}`}
           className={`
@@ -35,15 +35,14 @@ export const Carousel = ({ images, interval = 4000 }: CarouselProps) => {
         />
       ))}
 
-      {/* Indicadores */}
-      <div className="absolute bottom-2 flex gap-2">
+      <div className="absolute bottom-2.5 flex gap-2">
         {images.map((_, index) => (
           <span
             key={index}
             className={`
               w-2 h-2 rounded-full
               transition-colors
-              ${index === currentIndex ? "bg-primary" : "bg-muted"}
+              ${index === currentIndex ? "bg-amber-500" : "bg-sky-950"}
             `}
           />
         ))}

@@ -1,6 +1,7 @@
 import Card from "../../components/common/card/Card";
-import CardContent from "../../components/common/card/CardContent";
 import { useBoard } from "../../hooks/useBoard";
+import CardItem from "../../components/common/card/CardItem";
+
 import type { Board } from "../../types/Board";
 
 const Boards = () => {
@@ -19,18 +20,14 @@ const Boards = () => {
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,260px))] gap-6">
         {state.boards.map((board: Board) => (
-          <CardContent
+          <Card
+            key={board.id}
             buttonText="Detail"
             textPrimary="Title main"
             textSecondary="Title other"
           >
-            <Card
-              key={board.id}
-              title={board.name}
-              createdAt={board.createdAt}
-              color={board.color}
-            />
-          </CardContent>
+            <CardItem board={board} />
+          </Card>
         ))}
 
         {state.boards.length === 0 && (

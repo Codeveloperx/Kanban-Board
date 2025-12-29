@@ -2,7 +2,7 @@ import { hasSeenHome } from "../utils/onBoarding";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { ROUTES } from "../routes";
 
-export const OnboardingGuard = () => {
+const OnboardingGuard = () => {
   const { pathname } = useLocation();
   const isCompleted = hasSeenHome();
 
@@ -19,5 +19,6 @@ export const OnboardingGuard = () => {
 
   return <Outlet />;
 };
+export default OnboardingGuard;
 
 const navigateTo = (path: string) => <Navigate to={path} replace />;

@@ -3,7 +3,7 @@
  * @param key
  * @returns {T | null}
  */
-export function getItem<T>(key: string): T | null {
+export function getItems<T>(key: string): T | null {
   try {
     const value = localStorage.getItem(key);
     if (!value) return null;

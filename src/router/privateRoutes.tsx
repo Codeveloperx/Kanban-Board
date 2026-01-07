@@ -25,7 +25,7 @@ export const privateRoutes: RouteObject[] = [
 
       {
         element: <DashBoardLayout />,
-        hydrateFallbackElement: <Loading />,
+        hydrateFallbackElement: <Loading.Page />,
         children: [
           {
             path: ROUTES.BOARDS,

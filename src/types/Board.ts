@@ -4,10 +4,9 @@ export interface Board {
   id: string;
   name: string;
   color?: string;
-  createdAt: string;
-  updatedAt: string;
-  list: List[];
-  // lists: ListID[];
+  createdAt?: string;
+  updatedAt?: string;
+  list?: List[];
 }
 
 export type ListID = string;

@@ -1,13 +1,11 @@
 import { Plus } from "lucide-react";
-import { useBoard } from "../../hooks/useBoard";
-import { ActionBoard } from "../../types/BoardState";
 
 interface HeaderProps {
   showAction?: boolean;
+  onActionClick?: () => void;
 }
 
-const Header = ({ showAction = false }: HeaderProps) => {
-  const { dispatch } = useBoard();
+const Header = ({ showAction = false, onActionClick }: HeaderProps) => {
   return (
     <header className="h-14 bg-white border-b border-gray-200 px-6 flex items-center justify-between">
       <div className="flex items-center space-x-8">
@@ -17,12 +15,7 @@ const Header = ({ showAction = false }: HeaderProps) => {
         {showAction && (
           <button
             className="flex items-center space-x-1 cursor-pointer bg-gray-700 text-white px-3 py-1 rounded shadow hover:bg-gray-800"
-            onClick={() =>
-              dispatch({
-                type: ActionBoard.CREATE,
-                payload: { title: "New Board" },
-              })
-            }
+            onClick={onActionClick}
           >
             <Plus className="w-4 h-4" />
             <span className="text-sm">New Board</span>

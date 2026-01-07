@@ -1,13 +1,11 @@
-import { UUID } from "../../utils/uuid";
-import type { Board } from "../../types/Board";
-import type { List } from "../../types/List";
+import { formatDate, UUID } from "@/utils";
+
 import {
   ActionBoard,
   type BoardAction,
   type BoardState,
-} from "../../types/BoardState";
-import { formatDate } from "../../utils/formatDate";
-import { COLORS } from "../../utils/color";
+  type List,
+} from "@/types";
 
 const date = new Date();
 
@@ -17,10 +15,8 @@ export const boardReducer = (
 ): BoardState => {
   switch (action.type) {
     case ActionBoard.CREATE: {
-      const newBoard: Board = {
-        id: UUID(),
-        name: action.payload.title,
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      const newBoard = {
+        ...action.payload,
         createdAt: formatDate(date),
         updatedAt: formatDate(date),
         list: createList(),

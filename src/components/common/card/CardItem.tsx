@@ -1,20 +1,10 @@
 import { Bookmark } from "lucide-react";
+
 import type { Board } from "../../../types/Board";
 
 interface CardProps {
   board?: Board;
 }
-
-interface Item {
-  name: string;
-}
-
-const items: Item[] = [
-  { name: "Part time" },
-  { name: "Senior Level" },
-  { name: "Junior Level" },
-  { name: "Project Work" },
-];
 
 const CardItem = (props: CardProps) => {
   return (
@@ -33,22 +23,7 @@ const CardItem = (props: CardProps) => {
         </div>
       </div>
 
-      <div>
-        <h2 className="text-xs font-medium mx-4">Amazon</h2>
-        <h1 className="text-xl font-bold mx-4">UX Designer</h1>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {items.map((item: Item) => (
-          <div
-            key={item.name}
-            className="flex justify-center items-center border border-gray-400 rounded-full px-4 py-2"
-          >
-            <span className="text-xs font-medium text-gray-800">
-              {item.name}
-            </span>
-          </div>
-        ))}
-      </div>
+      <h1 className="text-lg font-bold truncate ">{props.board?.name}</h1>
     </div>
   );
 };

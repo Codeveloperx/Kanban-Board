@@ -18,14 +18,9 @@ const Boards = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,260px))] gap-6">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,260px))] gap-4">
         {state.boards.map((board: Board) => (
-          <Card
-            key={board.id}
-            buttonText="Detail"
-            textPrimary="Title main"
-            textSecondary="Title other"
-          >
+          <Card key={board.id} buttonText="Ver mas">
             <CardItem board={board} />
           </Card>
         ))}

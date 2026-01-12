@@ -18,7 +18,7 @@ export const boardReducer = (
       const newBoard = {
         ...action.payload,
         createdAt: formatDate(date),
-        updatedAt: formatDate(date),
+        updatedAt: "",
         list: createList(),
       };
 
@@ -26,6 +26,20 @@ export const boardReducer = (
         boards: [...state.boards, newBoard],
       };
     }
+
+    case ActionBoard.DELETE: {
+      const updatedBoards = state.boards.map((board) =>
+        board.id === action.payload
+          ? { ...board, active: false, updatedAt: formatDate(date) }
+          : board
+      );
+
+      return {
+        ...state,
+        boards: updatedBoards,
+      };
+    }
+
     default:
       return state;
   }

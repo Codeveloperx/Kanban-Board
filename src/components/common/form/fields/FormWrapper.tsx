@@ -12,15 +12,15 @@ import type { FormHandle, Field } from "@/types";
 
 type FormWrapperProps<T extends object> = {
   fields: Field[];
-  initialValues?: Partial<T>;
+  data?: Partial<T>;
 };
 
 function FormWrapperInner<T extends object>(
-  { fields, initialValues = {} }: FormWrapperProps<T>,
+  { fields, data = {} }: FormWrapperProps<T>,
   ref: React.Ref<FormHandle<T>>
 ) {
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const valuesRef = useRef<Partial<T>>(initialValues);
+  const valuesRef = useRef<Partial<T>>(data);
   const inputRef = useRef<Record<string, HTMLElement | null>>({});
   const memoizedFields = useMemo(() => fields, [fields]);
 
@@ -55,7 +55,7 @@ function FormWrapperInner<T extends object>(
     () => ({
       get: () => (validate() ? (valuesRef.current as T) : null),
       clear: () => {
-        valuesRef.current = initialValues;
+        valuesRef.current = data;
         setErrors({});
       },
       focus: (name: string) => {
@@ -65,14 +65,14 @@ function FormWrapperInner<T extends object>(
         }
       },
     }),
-    [validate, initialValues]
+    [validate, data]
   );
 
   return (
     <Form
       inputRef={inputRef}
       fields={memoizedFields}
-      values={initialValues as Record<string, unknown>}
+      values={data as Record<string, unknown>}
       onChange={handleChange}
       errors={errors}
     />

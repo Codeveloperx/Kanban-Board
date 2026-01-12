@@ -1,5 +1,5 @@
-import Card from "../../components/common/card/Card";
 import { useBoard } from "../../hooks/useBoard";
+import Card from "../../components/common/card/Card";
 import CardItem from "../../components/common/card/CardItem";
 
 import type { Board } from "../../types/Board";
@@ -19,11 +19,13 @@ const Boards = () => {
       </div>
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,260px))] gap-4">
-        {state.boards.map((board: Board) => (
-          <Card key={board.id} buttonText="Ver mas">
-            <CardItem board={board} />
-          </Card>
-        ))}
+        {state.boards
+          .filter((board: Board) => board.active)
+          .map((it) => (
+            <Card key={it.id} cardId={it.id} buttonText="Detail">
+              <CardItem board={it} />
+            </Card>
+          ))}
 
         {state.boards.length === 0 && (
           <div

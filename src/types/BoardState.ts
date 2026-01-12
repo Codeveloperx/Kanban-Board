@@ -23,7 +23,7 @@ export type ActionBoard = (typeof ActionBoard)[keyof typeof ActionBoard];
 export type BoardAction =
   | { type: typeof ActionBoard.CREATE; payload: Board }
   | { type: typeof ActionBoard.UPDATE; payload: { id: string; title?: string; description?: string }}
-  | { type: typeof ActionBoard.DELETE; payload: { id: string }}
+  | { type: typeof ActionBoard.DELETE; payload: string}
   | { type: typeof ActionBoard.SELECT; payload: { id: string | null }};
 
 export const initialBoardState: BoardState = {

@@ -1,5 +1,5 @@
 import {
-  KEY_BOARD_ID,
+  KEY_ID,
   KEY_MODE,
   KEY_MODE_CREATE,
   KEY_MODE_UPDATE,
@@ -30,7 +30,7 @@ const DashBoardLayout = () => {
   const formRef = useRef<FormHandle<Board>>(null);
 
   const mode = searchParams.get(KEY_MODE);
-  const id = searchParams.get(KEY_BOARD_ID);
+  const id = searchParams.get(KEY_ID);
   const isModalOpen = mode === KEY_MODE_CREATE || mode === KEY_MODE_UPDATE;
   const values = useBoardById(id);
 

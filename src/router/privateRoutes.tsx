@@ -1,4 +1,5 @@
 import { boardsLoader } from "./loader/loader.board";
+import { boardDetailLoader } from "./loader/loader.detail";
 import { ROUTES } from "./routes";
 import Boards from "../pages/boards/Boards";
 import DashBoardLayout from "../layouts/DashBoardLayout";
@@ -8,6 +9,7 @@ import OnboardingGuard from "./guards/onBoardingGuard";
 import OnBoardingLayout from "../layouts/OnBoardingLayout";
 
 import type { RouteObject } from "react-router-dom";
+import BoardDetail from "@/pages/boards/BoardDetail";
 
 export const privateRoutes: RouteObject[] = [
   {
@@ -34,7 +36,8 @@ export const privateRoutes: RouteObject[] = [
           },
           {
             path: ROUTES.BOARD_DETAIL,
-            element: <h1>Board detail</h1>,
+            element: <BoardDetail />,
+            loader: boardDetailLoader,
           },
         ],
       },

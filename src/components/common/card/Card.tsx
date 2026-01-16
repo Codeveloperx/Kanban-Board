@@ -8,6 +8,7 @@ interface CardProps {
   children?: React.ReactNode;
   cardId: string;
   buttonText: string;
+  // onAction: () => void;
 }
 
 const Card = (props: CardProps) => {
@@ -33,7 +34,10 @@ const Card = (props: CardProps) => {
       <div>{props.children}</div>
 
       <div className="flex items-center justify-end gap-2 mt-4">
-        <button className="text-white text-sm bg-gray-800 hover:bg-gray-900 px-4 py-1 rounded-lg cursor-pointer">
+        <button
+          className="text-white text-sm bg-gray-800 hover:bg-gray-900 px-4 py-1 rounded-lg cursor-pointer"
+          onClick={() => navigate(route.detail(props.cardId))}
+        >
           {props.buttonText}
         </button>
         <Dropdown options={options} />

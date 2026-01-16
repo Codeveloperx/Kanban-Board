@@ -4,7 +4,7 @@ export const ROUTES = {
 
   HOME: "/",
   BOARDS: "/boards",
-  BOARD_DETAIL: "/boards/:boardId",
+  BOARD_DETAIL: "/boards/:id",
 
   NOT_FOUND: "*",
 };

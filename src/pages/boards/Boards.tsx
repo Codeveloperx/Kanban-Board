@@ -1,8 +1,8 @@
-import { useBoard } from "../../hooks/useBoard";
-import Card from "../../components/common/card/Card";
-import CardItem from "../../components/common/card/CardItem";
+import { useBoard } from "@/hooks/useBoard";
+import Card from "@/components/common/card/Card";
+import CardItem from "@/components/common/card/CardItem";
 
-import type { Board } from "../../types/Board";
+import type { Board } from "@/types/Board";
 
 const Boards = () => {
   const { state } = useBoard();

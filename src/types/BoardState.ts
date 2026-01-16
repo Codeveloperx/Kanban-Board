@@ -22,7 +22,7 @@ export type ActionBoard = (typeof ActionBoard)[keyof typeof ActionBoard];
 //prettier-ignore
 export type BoardAction =
   | { type: typeof ActionBoard.CREATE; payload: Board }
-  | { type: typeof ActionBoard.UPDATE; payload: { id: string; title?: string; description?: string }}
+  | { type: typeof ActionBoard.UPDATE; payload: Board }
   | { type: typeof ActionBoard.DELETE; payload: string}
   | { type: typeof ActionBoard.SELECT; payload: { id: string | null }};
 

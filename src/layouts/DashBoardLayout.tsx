@@ -1,4 +1,9 @@
-import { KEY_MODE, KEY_MODE_CREATE } from "@/constants/Constants";
+import {
+  KEY_BOARD_ID,
+  KEY_MODE,
+  KEY_MODE_CREATE,
+  KEY_MODE_UPDATE,
+} from "@/constants/Constants";
 import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
 import { route } from "@/router/routes.helper";
 import { useBoardActions } from "@/hooks/useBoardActions";
@@ -11,6 +16,7 @@ import React, { Suspense, useRef } from "react";
 import SideBar from "@/components/sidebar/SideBar";
 
 import type { Board, Field, FormHandle } from "@/types";
+import { useBoardById } from "@/hooks/useBoardById";
 
 const FormWrapper = React.lazy(
   () => import("@/components/common/form/fields/FormWrapper")
@@ -19,14 +25,16 @@ const FormWrapper = React.lazy(
 const DashBoardLayout = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { createBoard } = useBoardActions();
+  const { createBoard, updateBoard } = useBoardActions();
 
   const formRef = useRef<FormHandle<Board>>(null);
 
   const mode = searchParams.get(KEY_MODE);
-  const isModalOpen = mode === KEY_MODE_CREATE;
+  const id = searchParams.get(KEY_BOARD_ID);
+  const isModalOpen = mode === KEY_MODE_CREATE || mode === KEY_MODE_UPDATE;
+  const values = useBoardById(id);
 
-  const title = "Crear tablero";
+  const title = id ? "Editar tablero" : "Crear tablero";
 
   const onOpenModal = () => {
     navigate(route.create());
@@ -51,6 +59,21 @@ const DashBoardLayout = () => {
     onCloseModal();
   };
 
+  const handleUpdateBoard = () => {
+    const values = formRef.current?.get();
+
+    if (!values) return;
+
+    updateBoard({
+      ...values,
+      name: values.name,
+      color: values.color,
+    });
+
+    formRef.current?.clear();
+    onCloseModal();
+  };
+
   return (
     <div className="flex h-screen border-2">
       <SideBar />
@@ -62,9 +85,17 @@ const DashBoardLayout = () => {
       </div>
 
       {isModalOpen && (
-        <Modal title={title} onClose={onCloseModal} onConfirm={handleNewBoard}>
+        <Modal
+          title={title}
+          onClose={onCloseModal}
+          onConfirm={!id ? handleNewBoard : handleUpdateBoard}
+        >
           <Suspense fallback={<Loading.Modal />}>
-            <FormWrapper ref={formRef} fields={fields as Field[]} />
+            <FormWrapper
+              ref={formRef}
+              fields={fields as Field[]}
+              data={values}
+            />
           </Suspense>
         </Modal>
       )}

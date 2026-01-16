@@ -1,6 +1,8 @@
-import { Trash2 } from "lucide-react";
+import { SquarePen, Trash2 } from "lucide-react";
 import { useBoardActions } from "@/hooks/useBoardActions";
 import Dropdown from "../button/Dropdown";
+import { useNavigate } from "react-router-dom";
+import { route } from "@/router/routes.helper";
 
 interface CardProps {
   children?: React.ReactNode;
@@ -10,8 +12,14 @@ interface CardProps {
 
 const Card = (props: CardProps) => {
   const { deleteBoard } = useBoardActions();
+  const navigate = useNavigate();
 
   const options = [
+    {
+      label: "Editar",
+      icon: SquarePen,
+      onClick: () => navigate(route.update(props.cardId)),
+    },
     {
       label: "Eliminar",
       icon: Trash2,

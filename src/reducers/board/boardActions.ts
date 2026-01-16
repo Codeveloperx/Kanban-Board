@@ -9,3 +9,8 @@ export const deleteBoard = (id: string) => ({
   type: ActionBoard.DELETE,
   payload: id,
 });
+
+export const updateBoard = (data: Board) => ({
+  type: ActionBoard.UPDATE,
+  payload: data,
+});

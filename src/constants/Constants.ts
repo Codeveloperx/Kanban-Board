@@ -15,3 +15,5 @@ export const KEY_LOADING = "loading";
 export const KEY_STORAGE = "kanban_boards";
 export const KEY_MODE = "mode";
 export const KEY_MODE_CREATE = "create";
+export const KEY_MODE_UPDATE = "update";
+export const KEY_BOARD_ID = "boardId";

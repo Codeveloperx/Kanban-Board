@@ -27,6 +27,20 @@ export const boardReducer = (
       };
     }
 
+    case ActionBoard.UPDATE: {
+      const updatesBoard = state.boards.map((board) =>
+        board.id === action.payload.id
+          ? {
+              ...board,
+              ...action.payload,
+              updatedAt: formatDate(date),
+            }
+          : board
+      );
+
+      return { boards: updatesBoard };
+    }
+
     case ActionBoard.DELETE: {
       const updatedBoards = state.boards.map((board) =>
         board.id === action.payload

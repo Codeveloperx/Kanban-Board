@@ -13,3 +13,5 @@ export const KEY_NAV_ARTIFACTS = "Artefactos";
 //GENERAL KEYS
 export const KEY_LOADING = "loading";
 export const KEY_STORAGE = "kanban_boards";
+export const KEY_MODE = "mode";
+export const KEY_MODE_CREATE = "create";

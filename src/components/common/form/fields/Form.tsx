@@ -1,5 +1,5 @@
 import { FormField } from "./FormField";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import type { Field } from "@/types/Field";
 
@@ -19,11 +19,8 @@ const Form = ({
   onChange,
 }: FormProps) => {
   const [formValues, setFormValues] = useState<Record<string, unknown>>(values);
-
-  useEffect(() => {
-    setFormValues(values);
-  }, [values]);
-
+  
+  //FIXME: VALIDAR O AGREGAR LA FUNCIONALIDAD PARA CUANDO SE REQUIERA PRECARGAR EL FORMULARIO: MODE -EDIT
   const memoizedFields = useMemo(
     () => fields.map((field) => ({ required: false, hidden: false, ...field })),
     [fields]

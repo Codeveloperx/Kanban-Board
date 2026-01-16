@@ -24,7 +24,10 @@ const Button = {
     <Defaultbutton {...props} className="bg-gray-700 hover:bg-gray-800" />
   ),
   Cancel: (props: ButtonProps) => (
-    <Defaultbutton {...props} className="bg-gray-400 hover:bg-gray-300 hover:text-gray-700" />
+    <Defaultbutton
+      {...props}
+      className="bg-gray-400 hover:bg-gray-300 hover:text-gray-700"
+    />
   ),
   Delete: (props: ButtonProps) => (
     <Defaultbutton {...props} className="bg-red-500 hover:bg-red-700" />

@@ -1,38 +1,52 @@
-import { Outlet } from "react-router-dom";
+import { KEY_MODE, KEY_MODE_CREATE } from "@/constants/Constants";
+import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
+import { route } from "@/router/routes.helper";
 import { useBoardActions } from "@/hooks/useBoardActions";
-import { useOpen } from "@/hooks/useOpen";
 import { UUID } from "@/utils/uuid";
 import fields from "@/layouts/form.json";
 import Header from "@/components/header/Header";
 import Loading from "@/components/common/loading/Loading";
+import Modal from "@/components/common/modals/Modal";
 import React, { Suspense, useRef } from "react";
 import SideBar from "@/components/sidebar/SideBar";
-const Modal = React.lazy(() => import("@/components/common/modals/Modal"));
+
+import type { Board, Field, FormHandle } from "@/types";
 
 const FormWrapper = React.lazy(
   () => import("@/components/common/form/fields/FormWrapper")
 );
 
-import type { Board, Field, FormHandle } from "@/types";
-
 const DashBoardLayout = () => {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const { createBoard } = useBoardActions();
+
   const formRef = useRef<FormHandle<Board>>(null);
 
-  const title = "Crear nuevo tablero";
+  const mode = searchParams.get(KEY_MODE);
+  const isModalOpen = mode === KEY_MODE_CREATE;
 
-  const {
-    isOpen: isOpenModal,
-    onClose: onCloseModal,
-    onOpen: onOpenModal,
-  } = useOpen();
+  const title = "Crear tablero";
+
+  const onOpenModal = () => {
+    navigate(route.create());
+  };
+
+  const onCloseModal = () => {
+    navigate(route.boards());
+  };
 
   const handleNewBoard = () => {
     const values = formRef.current?.get();
 
     if (!values) return;
-    
-    createBoard({ id: UUID(), name: values.name, color: values.color });
+
+    createBoard({
+      id: UUID(),
+      name: values.name,
+      color: values.color,
+      active: true,
+    });
     formRef.current?.clear();
     onCloseModal();
   };
@@ -47,7 +61,7 @@ const DashBoardLayout = () => {
         </main>
       </div>
 
-      {isOpenModal && (
+      {isModalOpen && (
         <Modal title={title} onClose={onCloseModal} onConfirm={handleNewBoard}>
           <Suspense fallback={<Loading.Modal />}>
             <FormWrapper ref={formRef} fields={fields as Field[]} />

@@ -5,6 +5,6 @@ export const ROUTES = {
   HOME: "/",
   BOARDS: "/boards",
   BOARD_DETAIL: "/boards/:boardId",
-  
+
   NOT_FOUND: "*",
-} as const;
+};

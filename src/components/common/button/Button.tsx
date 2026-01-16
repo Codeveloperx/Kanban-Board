@@ -8,7 +8,7 @@ type ButtonProps = {
 const Defaultbutton = (props: ButtonProps) => (
   <button
     type="button"
-    className={props.className}
+    className={`${props.className} flex-1 rounded px-3 py-1 text-white shadow cursor-pointer`}
     onClick={props.onClick}
     disabled={props.disabled}
   >
@@ -18,16 +18,13 @@ const Defaultbutton = (props: ButtonProps) => (
 
 const Button = {
   Base: (props: ButtonProps) => (
-    <Defaultbutton
-      {...props}
-      className={`text-white flex-1 px-3 py-1 rounded cursor-pointer ${props.className}`}
-    />
+    <Defaultbutton {...props} className={` ${props.className}`} />
   ),
   Add: (props: ButtonProps) => (
-    <Defaultbutton {...props} className="bg-blue-500 hover:bg-blue-700" />
+    <Defaultbutton {...props} className="bg-gray-700 hover:bg-gray-800" />
   ),
   Cancel: (props: ButtonProps) => (
-    <Defaultbutton {...props} className="bg-gray-500 hover:bg-gray-700" />
+    <Defaultbutton {...props} className="bg-gray-400 hover:bg-gray-300 hover:text-gray-700" />
   ),
   Delete: (props: ButtonProps) => (
     <Defaultbutton {...props} className="bg-red-500 hover:bg-red-700" />

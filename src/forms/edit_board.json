@@ -1,0 +1,16 @@
+[
+  {
+    "name": "name",
+    "label": "Nombre del tablero",
+    "type": "text",
+    "placeholder": "Ingresa un nombre para el tablero",
+    "required": true,
+    "errorMessage": "El nombre del tablero es obligatorio"
+  },
+  {
+    "name": "color",
+    "label": "Color",
+    "type": "color",
+    "errorMessage": "Debes seleccionar un color"
+  }
+]

@@ -1,12 +1,15 @@
+import type { Task } from "@/shared/types";
+
 export interface List {
   id: string;
   title: string;
+  description?: string;
   color?: string;
   position: number;
   collapsed: boolean;
-  // boardId?: string;
 
-  tasks: TaskID[];
+  tasks: Task[];
+  // tasks: TaskID[];
 }
 
 export type TaskID = string;

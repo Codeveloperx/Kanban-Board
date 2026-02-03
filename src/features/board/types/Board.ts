@@ -1,4 +1,4 @@
-import type { List } from "@/shared/types";
+import type { List } from "./List";
 import type { LucideIcon } from "lucide-react";
 
 type ActionsType = "Delete" | "Update";

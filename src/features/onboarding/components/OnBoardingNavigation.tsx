@@ -15,17 +15,21 @@ export const OnboardingNavigation = ({
 }: NavigationProps) => {
   return (
     <div className="mt-8 flex gap-4">
-      <Button.Secondary
+      <Button
+        variant="secondary"
         onClick={onPrevious}
         disabled={isFirstSlide}
-        label="Anterior"
         ariaLabel="Slide anterior"
-      />
-      <Button.Primary
-        onClick={onNext}
-        label={isLastSlide ? "Empezar" : "Siguiente"}
+      >
+        Anterior
+      </Button>
+      <Button
+        variant="primary"
         ariaLabel={isLastSlide ? "Empezar" : "Siguiente slide"}
-      />
+        onClick={onNext}
+      >
+        {isLastSlide ? "Empezar" : "Siguiente"}
+      </Button>
     </div>
   );
 };

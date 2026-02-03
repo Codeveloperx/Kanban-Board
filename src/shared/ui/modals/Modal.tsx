@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
-import { Button } from "../button/Button";
 import React from "react";
 import ReactDOM from "react-dom";
+import { Button } from "../button";
 
 type PropsType = {
   title: string;
@@ -36,8 +36,12 @@ const Modal = (props: PropsType) => {
         </div>
         {children}
         <div className="flex items-center justify-end gap-2 px-4 py-2">
-          <Button.Primary onClick={onConfirm} label={textConfirm} />
-          <Button.Secondary onClick={onClose} label={textCancel} />
+          <Button variant="primary" onClick={onConfirm}>
+            {textConfirm}
+          </Button>
+          <Button variant="secondary" onClick={onClose}>
+            {textCancel}
+          </Button>
         </div>
       </div>
     </div>,

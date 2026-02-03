@@ -13,8 +13,12 @@ const Dialog = (props: PropsType) => {
     <div className="bg-white border rounded shadow-lg mt-2">
       {props.children}
       <div className="flex gap-2 py-2 px-4">
-        <Button.Add label={props.accept} onClick={props.onConfirm} />
-        <Button.Cancel label={props.cancel} onClick={props.onCancel} />
+        <Button variant="primary" onClick={props.onConfirm}>
+          {props.accept}
+        </Button>
+        <Button variant="secondary" onClick={props.onCancel}>
+          {props.cancel}
+        </Button>
       </div>
     </div>
   );

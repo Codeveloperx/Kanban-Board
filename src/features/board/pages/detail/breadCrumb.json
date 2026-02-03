@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Board",
+    "path": "/boards"
+  },
+  {
+    "name": "{name}",
+    "path": "/boards/{id}"
+  }
+]

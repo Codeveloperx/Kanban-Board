@@ -6,7 +6,7 @@ import { ROUTES } from "@/app/router/routes";
 import { SquarePen } from "lucide-react";
 import { useNavigation } from "@/shared/hooks";
 
-import type { Board } from "../types/Board";
+import type { Board } from "../../types/Board";
 
 interface CardProps {
   board: Board;

@@ -9,7 +9,7 @@ import {
   KEY_NAV_ARTIFACTS,
   KEY_NAV_BOARDS,
   KEY_NAV_CHATS,
-} from "../../../shared/constants/Constants";
+} from "@/shared/constants/Constants";
 
 interface NavigationItem {
   icon: LucideIcon;

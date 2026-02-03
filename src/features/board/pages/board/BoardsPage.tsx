@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import { useBoard } from "@/features/board/hooks/useBoard";
-import BoardGrid from "@/features/board/components/BoardGrid";
+import BoardGrid from "@/features/board/components/board/BoardGrid";
 
 const BoardsPage = () => {
   const { state } = useBoard();
 
   return (
-    <>
+    <div className="p-6">
       <div className="mb-8 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Mis Tableros</h1>
@@ -21,7 +21,7 @@ const BoardsPage = () => {
       <BoardGrid boards={state.boards} />
 
       <Outlet />
-    </>
+    </div>
   );
 };
 

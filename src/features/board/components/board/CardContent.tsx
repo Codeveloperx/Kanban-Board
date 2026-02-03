@@ -1,4 +1,4 @@
-import type { Board } from "../types/Board";
+import type { Board } from "../../types/Board";
 import { Badge } from "./Badge";
 
 interface PropsType {

@@ -1,18 +1,34 @@
 import { House } from "lucide-react";
 import { Link } from "react-router-dom";
 
-interface BreadcrumbItem {
+interface BreadcrumbTemplate {
   name: string;
   path: string;
 }
 
 interface BreadcrumbProps {
-  items: BreadcrumbItem[];
+  template: BreadcrumbTemplate[];
+  params?: Record<string, string>;
 }
 
-const Breadcrumb = ({ items }: BreadcrumbProps) => {
+const replacePlaceholders = (
+  path: string,
+  params: Record<string, string> = {},
+) => {
+  return Object.entries(params).reduce(
+    (acc, [key, value]) => acc.replaceAll(`{${key}}`, value),
+    path,
+  );
+};
+
+const Breadcrumb = ({ template, params }: BreadcrumbProps) => {
+  const items = template.map(({ name, path }) => ({
+    name: replacePlaceholders(name, params),
+    path: replacePlaceholders(path, params),
+  }));
+
   return (
-    <div className="flex items-center gap-2 mb-6">
+    <div className="flex items-center gap-2 mb-4 pt-4 px-5">
       <House className="w-4 h-4 text-zinc-500" />
       <nav className="text-sm">
         <ul className="flex gap-1 text-gray-600">

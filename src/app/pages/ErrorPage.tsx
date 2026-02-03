@@ -1,6 +1,6 @@
-import { Button } from "@/shared/ui/button";
 import { ROUTES } from "../router/routes";
 import { useNavigation } from "@/shared/hooks";
+import { Button } from "@/shared/ui/button";
 import { useRouteError, isRouteErrorResponse } from "react-router-dom";
 
 export default function ErrorPage() {
@@ -22,9 +22,13 @@ export default function ErrorPage() {
         </h2>
         <p className="text-gray-500 mb-8">{errorMessage}</p>
         <div className="flex gap-3 justify-center">
-          <Button.Primary label="Reintentar" onClick={handleReload} />
+          <Button variant="primary" onClick={handleReload}>
+            Reintentar
+          </Button>
 
-          <Button.Secondary label="Volver" onClick={handleNavigate} />
+          <Button variant="secondary" onClick={handleNavigate}>
+            Volver
+          </Button>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { Bookmark, BookMarked } from "lucide-react";
 import { useOpen } from "@/shared/hooks/useOpen";
 import { Dropdown } from "@/shared/ui/button";
 
-import type { Actions } from "../types/Board";
+import type { Actions } from "../../types/Board";
 
 interface PropsTypes {
   initials: string;

@@ -14,6 +14,7 @@ export const boardReducer = (
         ...action.payload,
         createdAt: formatDate(date),
         updatedAt: "",
+        // list: [],
         list: createList(),
       };
 

@@ -1,5 +1,6 @@
-import type { List } from "@/shared/types";
+
 import { UUID } from "@/shared/utils";
+import type { List } from "../types/List";
 
 export const createList = (): List[] => [
   {

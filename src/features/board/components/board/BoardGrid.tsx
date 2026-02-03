@@ -3,7 +3,7 @@ import { EmptyBoard } from "./EmptyBoard";
 import { ROUTES } from "@/app/router/routes";
 import { useNavigation } from "@/shared/hooks";
 
-import type { Board as BoardType } from "../types/Board";
+import type { Board as BoardType } from "../../types/Board";
 
 interface BoardProps {
   boards: BoardType[];

@@ -15,7 +15,9 @@ export default function NotFoundPage() {
           Página no encontrada
         </h2>
         <p className="text-gray-500 mb-8">La página que buscas no existe</p>
-        <Button.Primary label="Volver al inicio" onClick={handleNavigate} />
+        <Button variant="primary" onClick={handleNavigate}>
+          Volver al inicio
+        </Button>
       </div>
     </div>
   );

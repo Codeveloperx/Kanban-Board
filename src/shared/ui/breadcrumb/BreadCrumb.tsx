@@ -1,5 +1,5 @@
 import { House } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface BreadcrumbTemplate {
   name: string;
@@ -22,6 +22,8 @@ const replacePlaceholders = (
 };
 
 const Breadcrumb = ({ template, params }: BreadcrumbProps) => {
+  const { pathname } = useLocation();
+
   const items = template.map(({ name, path }) => ({
     name: replacePlaceholders(name, params),
     path: replacePlaceholders(path, params),
@@ -33,15 +35,18 @@ const Breadcrumb = ({ template, params }: BreadcrumbProps) => {
       <nav className="text-sm">
         <ul className="flex gap-1 text-gray-600">
           {items.map((item, index) => (
-            <li key={item.path} className="flex items-center">
-              {index !== 0 && <span className="mx-1">/</span>}
-              <Link
-                to={item.path}
-                className="hover:text-zinc-900 transition-colors"
-              >
-                {item.name}
-              </Link>
-            </li>
+            <>
+              <li key={item.path} className="flex items-center">
+                {index !== 0 && <span className="mx-1">/</span>}
+                <Link
+                  to={item.path}
+                  className={`hover:text-zinc-900 transition-colors
+                    ${item.path === pathname ? "text-zinc-800" : ""}`}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            </>
           ))}
         </ul>
       </nav>

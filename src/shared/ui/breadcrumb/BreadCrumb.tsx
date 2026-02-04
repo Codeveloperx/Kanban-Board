@@ -35,18 +35,16 @@ const Breadcrumb = ({ template, params }: BreadcrumbProps) => {
       <nav className="text-sm">
         <ul className="flex gap-1 text-gray-600">
           {items.map((item, index) => (
-            <>
-              <li key={item.path} className="flex items-center">
-                {index !== 0 && <span className="mx-1">/</span>}
-                <Link
-                  to={item.path}
-                  className={`hover:text-zinc-900 transition-colors
+            <li key={item.path} className="flex items-center">
+              {index !== 0 && <span className="mx-1">/</span>}
+              <Link
+                to={item.path}
+                className={`hover:text-zinc-900 transition-colors
                     ${item.path === pathname ? "text-zinc-800" : ""}`}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            </>
+              >
+                {item.name}
+              </Link>
+            </li>
           ))}
         </ul>
       </nav>

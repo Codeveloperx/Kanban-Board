@@ -1,6 +1,6 @@
-import { boardReducer } from "../state/board.reducer";
+import { boardReducer } from "../state/board/board.reducer";
 import { getBoards, saveBoards } from "../utils/boardStorage";
-import { initialBoardState as initialState } from "../state/board.type";
+import { initialBoardState as initialState } from "../state/board/board.type";
 import { useReducer, useEffect } from "react";
 
 export const useBoardReducer = () => {

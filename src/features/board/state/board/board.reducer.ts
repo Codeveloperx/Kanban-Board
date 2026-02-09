@@ -1,4 +1,4 @@
-import { createList } from "../utils/initialList";
+import { createList } from "../../utils/initialList";
 import { formatDate } from "@/shared/utils";
 import { ActionBoard, type BoardAction, type BoardState } from "./board.type";
 
@@ -14,15 +14,13 @@ export const boardReducer = (
         ...action.payload,
         createdAt: formatDate(date),
         updatedAt: "",
-        // list: [],
-        list: createList(),
       };
 
       return {
+        ...state,
         boards: [...state.boards, newBoard],
       };
     }
-
     case ActionBoard.UPDATE: {
       const updatesBoard = state.boards.map((board) =>
         board.id === action.payload.id

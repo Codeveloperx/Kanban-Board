@@ -8,5 +8,5 @@ export const VARIANT_STYLES = {
 
   delete: "h-10 bg-red-500 text-white hover:bg-red-700",
 
-  add: "w-64 flex-none border-2 border-dashed border-gray-300 p-4 text-gray-500 hover:border-zinc-800 hover:text-zinc-800",
+  add: "flex-none border-2 border-dashed border-gray-300 text-gray-500 hover:border-zinc-800 hover:text-zinc-800",
 };

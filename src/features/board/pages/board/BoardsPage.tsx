@@ -3,7 +3,7 @@ import { useBoard } from "@/features/board/hooks/useBoard";
 import BoardGrid from "@/features/board/components/board/BoardGrid";
 
 const BoardsPage = () => {
-  const { state } = useBoard();
+  const { boards: state } = useBoard();
 
   return (
     <div className="p-6">

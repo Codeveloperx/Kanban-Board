@@ -1,6 +1,6 @@
 import { ActionBoard } from "./board.type";
 
-import type { Board } from "../types/Board";
+import type { Board } from "../../types/Board";
 
 export const createBoard = (data: Board) => ({
   type: ActionBoard.CREATE,

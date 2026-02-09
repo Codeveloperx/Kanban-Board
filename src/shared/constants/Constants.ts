@@ -4,6 +4,11 @@ export const KEY_UPDATE_BOARD = "UPDATE_BOARD";
 export const KEY_DELETE_BOARD = "DELETE_BOARD";
 export const KEY_SELECT_BOARD = "SELECT_BOARD";
 
+//LIST ACTIONS KEYS
+export const KEY_CREATE_LIST = "CREATE_LIST";
+export const KEY_UPDATE_LIST = "UPDATE_LIST";
+export const KEY_DELETE_LIST = "DELETE_LIST";
+
 //NAVIGATION KEYS
 export const KEY_NAV_HOME = "Home";
 export const KEY_NAV_CHATS = "Chats";

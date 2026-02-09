@@ -1,5 +1,6 @@
 import { createContext } from "react";
-import type { BoardAction, BoardState } from "../state/board.type";
+
+import type { BoardAction, BoardState } from "../state/board/board.type";
 
 const initialState: BoardState = {
   boards: [],

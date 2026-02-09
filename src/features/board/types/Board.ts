@@ -1,4 +1,3 @@
-import type { List } from "./List";
 import type { LucideIcon } from "lucide-react";
 
 type ActionsType = "Delete" | "Update";
@@ -17,6 +16,6 @@ export interface Board {
   tags?: string[];
   createdAt?: string;
   updatedAt?: string;
-  list?: List[];
-  active: Boolean;
+  // list?: List[];
+  active: boolean;
 }

@@ -2,7 +2,7 @@ import { KEY_STORAGE } from "@/shared/constants/Constants";
 import { getItems, setItem } from "@/shared/utils/storage";
 
 import type { Board } from "../types/Board";
-import type { BoardState as Boards } from "../state/board.type";
+import type { BoardState as Boards } from "../state/board/board.type";
 
 export const getBoards = (): Boards | null => getItems<Boards>(KEY_STORAGE);
 

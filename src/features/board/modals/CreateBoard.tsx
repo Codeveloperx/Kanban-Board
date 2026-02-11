@@ -1,13 +1,12 @@
-import { useBoardActions } from "../hooks";
-import Modal from "@/shared/ui/modals/Modal";
 import { lazy, Suspense, useRef } from "react";
+import { useBoardActions } from "../hooks/board";
+import { useNavigation } from "@/shared/hooks";
+import fields from "@/forms/create_board.json";
 import Loading from "@/shared/ui/loading/Loading";
+import Modal from "@/shared/ui/modals/Modal";
+
 import type { Board } from "../types/Board";
 import type { Field, FormHandle } from "@/shared/types";
-
-import fields from "@/forms/create_board.json";
-import { useNavigation } from "@/shared/hooks";
-import { UUID } from "@/shared/utils";
 const FormWrapper = lazy(() => import("@/shared/ui/form/fields/FormWrapper"));
 
 const CreateBoardModal = () => {
@@ -23,7 +22,6 @@ const CreateBoardModal = () => {
     if (!form) return;
 
     createBoard({
-      id: UUID(),
       name: form.name,
       color: form.color,
       active: true,

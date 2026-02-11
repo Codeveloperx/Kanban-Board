@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { useBoard } from "@/features/board/hooks/useBoard";
+import { useBoard } from "@/features/board/hooks/board/useBoard";
 import BoardGrid from "@/features/board/components/board/BoardGrid";
 
 const BoardsPage = () => {

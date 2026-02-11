@@ -1,21 +1,33 @@
-import { KEY_STORAGE } from "@/shared/constants/Constants";
-import { getItems, setItem } from "@/shared/utils/storage";
+import { getItems, setItem } from "@/shared/utils";
 
 import type { Board } from "../types/Board";
-import type { BoardState as Boards } from "../state/board.type";
+import type { BoardState as Boards } from "../state/board/board.type";
+import type { ListState } from "../state/list/list.type";
+import type { TaskState } from "../state/task/task.type";
 
-export const getBoards = (): Boards | null => getItems<Boards>(KEY_STORAGE);
+export const STORAGE_KEYS = {
+  BOARDS: "kanban_boards",
+  LISTS: "kanban_lists",
+  TASKS: "kanban_tasks",
+} as const;
 
-export const saveBoards = (boards: Boards): void =>
-  setItem<Boards>(KEY_STORAGE, boards);
+export const storage = {
+  boards: {
+    save: (boards: Boards) => setItem(STORAGE_KEYS.BOARDS, boards),
+    load: () => getItems<Boards>(STORAGE_KEYS.BOARDS),
+    loadById: (id: string): Board | null => {
+      const boards = getItems<Boards>(STORAGE_KEYS.BOARDS);
+      return boards?.boards.find((b) => b.id === id) ?? null;
+    },
+  },
 
-export const getBoardId = (id: string): Board | null => {
-  const data = getBoards();
+  lists: {
+    save: (lists: ListState) => setItem(STORAGE_KEYS.LISTS, lists),
+    load: () => getItems<ListState>(STORAGE_KEYS.LISTS),
+  },
 
-  if (data) {
-    const board = data.boards.find((b) => b.id === id);
-    return board || null;
-  }
-
-  return null;
+  tasks: {
+    save: (tasks: TaskState) => setItem(STORAGE_KEYS.TASKS, tasks),
+    load: () => getItems<TaskState>(STORAGE_KEYS.TASKS),
+  },
 };

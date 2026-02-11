@@ -1,18 +1,19 @@
-import { useParams } from "react-router-dom";
-import { useBoardActions, useBoardById } from "../hooks";
-import Modal from "@/shared/ui/modals/Modal";
-import { useNavigation } from "@/shared/hooks";
 import { lazy, Suspense, useRef } from "react";
-import type { Field, FormHandle } from "@/shared/types";
-import type { Board } from "../types/Board";
-import Loading from "@/shared/ui/loading/Loading";
-
+import { useBoardActions } from "../hooks/board";
+import { useBoardById } from "../hooks";
+import { useNavigation } from "@/shared/hooks";
+import { useParams } from "react-router-dom";
 import fields from "@/forms/edit_board.json";
+import Loading from "@/shared/ui/loading/Loading";
+import Modal from "@/shared/ui/modals/Modal";
+
+import type { Board } from "../types/Board";
+import type { Field, FormHandle } from "@/shared/types";
 const FormWrapper = lazy(() => import("@/shared/ui/form/fields/FormWrapper"));
 
 const UpdateBoard = () => {
   const { id } = useParams();
-  const values = useBoardById(id!);
+  const values = useBoardById(id);
 
   const { goBack } = useNavigation();
   const { updateBoard } = useBoardActions();

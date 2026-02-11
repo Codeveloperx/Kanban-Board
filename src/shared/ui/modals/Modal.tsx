@@ -10,6 +10,7 @@ type PropsType = {
   textCancel?: string;
   textConfirm?: string;
   children: React.ReactNode;
+  isSubmit?: boolean;
 };
 
 const Modal = (props: PropsType) => {
@@ -37,7 +38,7 @@ const Modal = (props: PropsType) => {
         {children}
         <div className="flex items-center justify-end gap-2 px-4 py-2">
           <Button variant="primary" onClick={onConfirm}>
-            {textConfirm}
+            {!props.isSubmit ? textConfirm : 'Loading...'}
           </Button>
           <Button variant="secondary" onClick={onClose}>
             {textCancel}

@@ -4,13 +4,13 @@ import { taskReducer } from "../../state/task/task.reducer";
 import { useReducer, useEffect } from "react";
 
 export const useTaskReducer = () => {
-  const [task, dispatchTask] = useReducer(taskReducer, initialState, (init) => {
+  const [tasks, dispatchTasks] = useReducer(taskReducer, initialState, (init) => {
     return storage.tasks.load() || init;
   });
 
   useEffect(() => {
-    storage.tasks.save(task);
-  }, [task]);
+    storage.tasks.save(tasks);
+  }, [tasks]);
 
-  return { task, dispatchTask };
+  return { tasks, dispatchTasks };
 };

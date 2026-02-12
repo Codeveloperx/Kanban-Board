@@ -4,7 +4,7 @@ import { useReducer, useEffect } from "react";
 import { storage } from "../../utils/boardStorage";
 
 export const useListReducer = () => {
-  const [list, dispatchLists] = useReducer(
+  const [lists, dispatchLists] = useReducer(
     listReducer,
     initialState,
     (init) => {
@@ -13,8 +13,8 @@ export const useListReducer = () => {
   );
 
   useEffect(() => {
-    storage.lists.save(list);
-  }, [list]);
+    storage.lists.save(lists);
+  }, [lists]);
 
-  return { list, dispatchLists };
+  return { lists, dispatchLists };
 };

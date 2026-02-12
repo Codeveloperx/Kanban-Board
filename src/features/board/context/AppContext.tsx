@@ -7,10 +7,10 @@ import type { TaskAction, TaskState } from "../state/task/task.type";
 export interface AppContextValue {
   boards: BoardState;
   dispatchBoards: React.Dispatch<BoardAction>;
-  list: ListState;
+  lists: ListState;
   dispatchLists: React.Dispatch<ListAction>;
-  task: TaskState;
-  dispatchTask: React.Dispatch<TaskAction>;
+  tasks: TaskState;
+  dispatchTasks: React.Dispatch<TaskAction>;
 }
 
 export const AppContext = createContext<AppContextValue | null>(null);

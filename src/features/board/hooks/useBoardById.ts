@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useBoard } from "@/features/board/hooks/useBoard";
+import { useBoard } from "@/features/board/hooks/board/useBoard";
 
 export const useBoardById = (id?: string | null) => {
   const { state } = useBoard();

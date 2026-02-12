@@ -1,22 +1,12 @@
-import type { List } from "./List";
-import type { LucideIcon } from "lucide-react";
+import type { BaseEntity } from "@/shared/types/BaseEntity";
+import type { Tag } from "./Tag";
 
-type ActionsType = "Delete" | "Update";
-
-export interface Actions {
-  name: string;
-  icon: LucideIcon;
-  onAction: () => void;
-  type?: ActionsType;
-}
-
-export interface Board {
-  id: string;
+export interface Board extends BaseEntity {
   name: string;
   color: string;
-  tags?: string[];
-  createdAt?: string;
-  updatedAt?: string;
-  list?: List[];
+  tags?: Tag[];
   active: Boolean;
 }
+
+export type CreateData = Omit<Board, "id" | "createdAt" | "updatedAt">;
+export type UpdatedData = Omit<Board, "createdAt">;

@@ -1,15 +1,9 @@
-import type { Task } from "@/shared/types";
+import type { BaseEntity } from "@/shared/types/BaseEntity";
 
-export interface List {
-  id: string;
+export interface List extends BaseEntity {
+  boardId: string;
   title: string;
-  description?: string;
-  color?: string;
   position: number;
   collapsed: boolean;
-
-  tasks: Task[];
-  // tasks: TaskID[];
+  color?: string;
 }
-
-export type TaskID = string;

@@ -1,6 +1,7 @@
-import { createList } from "../utils/initialList";
 import { formatDate } from "@/shared/utils";
-import { ActionBoard, type BoardAction, type BoardState } from "./board.type";
+import { createBaseEntity } from "../../utils/createBaseEntity";
+
+import { BOARD_ACTIONS, type BoardAction, type BoardState } from "./board.type";
 
 const date = new Date();
 
@@ -9,21 +10,14 @@ export const boardReducer = (
   action: BoardAction,
 ): BoardState => {
   switch (action.type) {
-    case ActionBoard.CREATE: {
-      const newBoard = {
-        ...action.payload,
-        createdAt: formatDate(date),
-        updatedAt: "",
-        // list: [],
-        list: createList(),
-      };
-
+    case BOARD_ACTIONS.CREATE: {
+      const newBoard = { ...createBaseEntity(), ...action.payload };
       return {
         boards: [...state.boards, newBoard],
       };
     }
 
-    case ActionBoard.UPDATE: {
+    case BOARD_ACTIONS.UPDATE: {
       const updatesBoard = state.boards.map((board) =>
         board.id === action.payload.id
           ? {
@@ -37,17 +31,14 @@ export const boardReducer = (
       return { boards: updatesBoard };
     }
 
-    case ActionBoard.DELETE: {
-      const updatedBoards = state.boards.map((board) =>
+    case BOARD_ACTIONS.DELETE: {
+      const boards = state.boards.map((board) =>
         board.id === action.payload
           ? { ...board, active: false, updatedAt: formatDate(date) }
           : board,
       );
 
-      return {
-        ...state,
-        boards: updatedBoards,
-      };
+      return { ...state, boards };
     }
 
     default:

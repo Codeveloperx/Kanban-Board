@@ -41,6 +41,16 @@ export const boardReducer = (
       return { ...state, boards };
     }
 
+    case BOARD_ACTIONS.FAVORITE: {
+      const boards = state.boards.map((board) =>
+        board.id === action.payload
+          ? { ...board, isFavorite: true, updatedAt: formatDate(date) }
+          : board,
+      );
+
+      return { ...state, boards };
+    }
+
     default:
       return state;
   }

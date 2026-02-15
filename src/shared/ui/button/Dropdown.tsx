@@ -1,23 +1,25 @@
-import { MoreVertical } from "lucide-react";
-import { useOpen } from "@/shared/hooks/useOpen";
-import { useState, useRef, useEffect } from "react";
+import { MoreHorizontal } from "lucide-react";
+import { useRef, useEffect } from "react";
 
-import type { Actions } from "@/features/board/types/Board";
+import type { Actions } from "@/features/board/types/Actions";
+import { useOpen } from "@/shared/hooks";
 
 interface DropdownProps {
-  options: Actions[];
+  actions: Actions[];
 }
 
-export const Dropdown = ({ options }: DropdownProps) => {
-  const { isOpen, onClose, onToggle } = useOpen(false);
-  const [openUpward, setOpenUpward] = useState(false);
-
-  const menuRef = useRef<HTMLDivElement>(null);
+export const Dropdown = ({ actions }: DropdownProps) => {
+  const { isOpen, onClose, onToggle } = useOpen();
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node) &&
+        !buttonRef.current?.contains(event.target as Node)
+      ) {
         onClose();
       }
     };
@@ -26,61 +28,50 @@ export const Dropdown = ({ options }: DropdownProps) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    if (!isOpen || !buttonRef.current) return;
-
-    const rect = buttonRef.current.getBoundingClientRect();
-    const spaceBelow = window.innerHeight - rect.bottom;
-    const MENU_HEIGHT = options.length * 44;
-
-    setOpenUpward(spaceBelow < MENU_HEIGHT);
-  }, [isOpen, options.length]);
+  const toggleDropdown = () => {
+    onToggle();
+  };
 
   return (
-    <div ref={menuRef} className="relative inline-block">
+    <div className="relative">
       <button
         ref={buttonRef}
-        onClick={() => onToggle()}
-        className="px-2 py-1.5 rounded-lg hover:bg-neutral-100 transition-colors"
-        aria-haspopup="menu"
+        onClick={toggleDropdown}
+        className="absolute -top-4 -right-2 text-gray-500 hover:text-gray-900 bg-white border-transparent hover:bg-gray-100 rounded-lg p-1.5  transition-colors cursor-pointer"
+        type="button"
         aria-expanded={isOpen}
+        aria-haspopup="true"
       >
-        <MoreVertical className="h-4 w-4" />
+        <span className="sr-only">Open dropdown</span>
+        <MoreHorizontal className="w-5 h-5" />
       </button>
 
       {isOpen && (
         <div
-          className={`
-            absolute right-0 z-50 w-40 rounded-lg border border-gray-300 bg-white py-1 shadow-lg
-            ${openUpward ? "bottom-full mb-1" : "top-full mt-1"}
-          `}
-          role="menu"
+          ref={dropdownRef}
+          className="absolute top-2 right-2 z-10 bg-white border border-gray-200 rounded-lg shadow-lg w-36"
         >
-          {options.map((opt) => {
-            const Icon = opt.icon;
-
-            return (
-              <button
-                key={opt.name}
-                onClick={() => {
-                  opt.onAction();
-                  onClose();
-                }}
-                role="menuitem"
-                className={`
-                  flex w-full items-center gap-2 px-4 py-2 text-left text-sm
-                  ${
-                    opt.type === "Delete"
-                      ? "text-red-600 hover:bg-red-50"
-                      : "text-gray-700 hover:bg-gray-100"
-                  }
-                `}
-              >
-                {Icon && <Icon className="h-5 w-5" />}
-                {opt.name}
-              </button>
-            );
-          })}
+          <ul className="p-2 text-sm text-gray-700 font-medium">
+            {actions.map((action, index) => {
+              const Icon = action.icon;
+              return (
+                <li key={index}>
+                  <button
+                    onClick={() => {
+                      action.onAction();
+                      onClose();
+                    }}
+                    className={`inline-flex gap-2 items-center w-full p-2 hover:bg-gray-100 rounded-md text-left transition-colors cursor-pointer ${
+                      action.isDanger ? "text-red-600" : "hover:text-gray-900"
+                    }`}
+                  >
+                    {Icon && <Icon className="h-3.5 w-3.5" />}
+                    {action.name}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       )}
     </div>

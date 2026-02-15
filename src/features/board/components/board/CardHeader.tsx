@@ -1,8 +1,8 @@
 import { Bookmark, BookMarked } from "lucide-react";
-import { useOpen } from "@/shared/hooks/useOpen";
-import { Dropdown } from "@/shared/ui/button";
+import { Dropdown } from "@/shared/ui/button/Dropdown";
+import { useOpen } from "@/shared/hooks";
 
-import type { Actions } from "../../types/Board";
+import type { Actions } from "../../types/Actions";
 
 interface PropsTypes {
   initials: string;
@@ -18,17 +18,17 @@ export const CardHeader = (props: PropsTypes) => {
     onToggle();
     props.onSave();
   };
-
+  
   return (
     <div className="flex justify-between items-center mb-4">
-      <div className="w-[52px] h-[52px] bg-zinc-900 text-white rounded-[14px] flex items-center justify-center font-bold text-lg tracking-wide shadow-md group-hover:rotate-[-5deg] group-hover:scale-105 transition-all duration-300">
+      <div className="w-12 h-12 rounded-lg flex items-center justify-center font-bold text-lg shadow-md bg-zinc-900 text-white group-hover:rotate-[-5deg] group-hover:scale-105 transition-all duration-300">
         {props.initials}
       </div>
 
-      <div className="flex items-center gap-0.5">
+      <div className="flex items-center gap-8">
         <button
           onClick={handleSave}
-          className={`px-2 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+          className={`bg-white rounded-lg text-sm font-medium transition-all duration-200 p-2 cursor-pointer ${
             isSaved
               ? "bg-orange-50"
               : "text-neutral-500 hover:bg-neutral-100 hover:text-zinc-900"
@@ -37,10 +37,10 @@ export const CardHeader = (props: PropsTypes) => {
           {isSaved ? (
             <BookMarked className="h-4 w-4" />
           ) : (
-            <Bookmark className="h-4 w-4 text-zinc-800" />
+            <Bookmark className="h-4 w-4" />
           )}
         </button>
-        {actions.length > 0 && <Dropdown options={actions} />}
+        {actions.length > 0 && <Dropdown actions={actions} />}
       </div>
     </div>
   );

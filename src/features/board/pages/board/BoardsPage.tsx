@@ -1,9 +1,11 @@
+import { getActiveBoards } from "../../utils/getActiveBoards";
 import { Outlet } from "react-router-dom";
 import { useBoard } from "@/features/board/hooks/board/useBoard";
 import BoardGrid from "@/features/board/components/board/BoardGrid";
 
 const BoardsPage = () => {
   const { state } = useBoard();
+  const boards = getActiveBoards(state.boards);
 
   return (
     <div className="p-6">
@@ -11,9 +13,9 @@ const BoardsPage = () => {
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Mis Tableros</h1>
           <p className="text-sm text-gray-500">
-            {state.boards.length === 0
+            {boards.length === 0
               ? "Crea tu primer tablero para empezar a organizar tus proyectos."
-              : `${state.boards.length} ${state.boards.length === 1 ? "tablero activo" : "tableros activos"}`}
+              : `${boards.length} ${boards.length === 1 ? "tablero activo" : "tableros activos"}`}
           </p>
         </div>
       </div>

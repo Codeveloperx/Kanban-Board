@@ -15,3 +15,8 @@ export const updateBoard = (data: UpdatedData) => ({
   type: BOARD_ACTIONS.UPDATE,
   payload: data,
 });
+
+export const favoriteBoard = (data: string) => ({
+  type: BOARD_ACTIONS.FAVORITE,
+  payload: data,
+});

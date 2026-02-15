@@ -2,6 +2,7 @@ import { useBoard } from "./useBoard";
 import {
   createBoard,
   deleteBoard,
+  favoriteBoard,
   updateBoard,
 } from "../../state/board/board.actions";
 
@@ -14,5 +15,6 @@ export const useBoardActions = () => {
     createBoard: (payload: CreateData) => dispatch(createBoard(payload)),
     deleteBoard: (payload: string) => dispatch(deleteBoard(payload)),
     updateBoard: (payload: UpdatedData) => dispatch(updateBoard(payload)),
+    favoriteBoard: (payload: string) => dispatch(favoriteBoard(payload)),
   };
 };

@@ -1,4 +1,5 @@
 import CreateBoardModal from "@/features/board/modals/CreateBoard";
+import DeleteBoard from "@/features/board/modals/DeleteBoard";
 import UpdateBoard from "@/features/board/modals/UpdateBoard";
 import { ROUTES } from "../routes";
 
@@ -12,5 +13,9 @@ export const BoardRoutes: RouteObject[] = [
   {
     path: ROUTES.EDIT_BOARD,
     element: <UpdateBoard />,
+  },
+  {
+    path: ROUTES.DELETE_BOARD,
+    element: <DeleteBoard />,
   },
 ];

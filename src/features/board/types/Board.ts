@@ -5,6 +5,7 @@ export interface Board extends BaseEntity {
   name: string;
   color: string;
   tags?: Tag[];
+  isFavorite?: boolean;
   active: Boolean;
 }
 

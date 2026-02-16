@@ -1,15 +1,20 @@
+import ListOptions from "./ListOptions";
 import type { LucideIcon } from "lucide-react";
 
-import type { List } from "../../types/List";
-import ListOptions from "./ListOptions";
-
 interface PropsTypes {
-  list: List;
+  title: string;
+  amountTask?: number;
+  color: string | undefined;
   icon: LucideIcon;
   options?: string[];
 }
 
-export const ListHeader = ({ list, icon: Icon }: PropsTypes) => {
+export const ListHeader = ({
+  title,
+  amountTask = 0,
+  color,
+  icon: Icon,
+}: PropsTypes) => {
   return (
     <section>
       <div className=" header flex items-center gap-1 justify-between">
@@ -26,19 +31,19 @@ export const ListHeader = ({ list, icon: Icon }: PropsTypes) => {
           <div className="flex items-center gap-2 min-w-0 flex-1">
             <h2
               className="text-sm font-semibold text-gray-700 uppercase wrap-break-word truncate min-w-0"
-              title={list.title}
+              title={title}
             >
-              {list.title}
+              {title}
             </h2>
             <span className="bg-gray-200 text-gray-600 text-xs font-bold px-2 py-1 rounded-full shrink-0">
-              {list.tasks?.length}
+              {amountTask}
             </span>
           </div>
           <ListOptions isCollapsed onCollapsed={() => {}} />
         </div>
       </div>
       <div
-        style={{ borderColor: list.color }}
+        style={{ borderColor: color }}
         className="border-b-2 mt-2 mb-4"
       ></div>
     </section>

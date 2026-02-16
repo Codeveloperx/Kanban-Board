@@ -1,7 +1,6 @@
 import { memo, useEffect, useState } from "react";
 
 interface ColorPickerProps {
-  id: string;
   name: string;
   value: string;
   colors: string[];
@@ -9,9 +8,9 @@ interface ColorPickerProps {
 }
 
 const ColorPicker = memo(
-  ({ id, name, value, colors, onChange }: ColorPickerProps) => {
+  ({ name, value, colors, onChange }: ColorPickerProps) => {
     const [selectedColor, setSelectedColor] = useState<string>(
-      value || colors[0]
+      value || colors[0],
     );
 
     useEffect(() => {
@@ -33,7 +32,7 @@ const ColorPicker = memo(
           {colors.map((color) => (
             <button
               key={color}
-              id={`${id}-${color}`}
+              id={name}
               name={name}
               type="button"
               role="radio"
@@ -61,7 +60,7 @@ const ColorPicker = memo(
         </div>
       </div>
     );
-  }
+  },
 );
 
 export default ColorPicker;

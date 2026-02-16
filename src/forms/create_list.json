@@ -1,0 +1,24 @@
+[
+  {
+    "name": "title",
+    "label": "Nombre de la lista",
+    "type": "text",
+    "placeholder": "Nombre de la lista",
+    "required": true,
+    "errorMessage": "El campo es obligatorio"
+  },
+  {
+    "name": "color",
+    "label": "Color",
+    "type": "color",
+    "options": [
+      "#6C757D",
+      "#3B82F6",
+      "#F59E0B",
+      "#EF4444",
+      "#8B5CF6",
+      "#10B981"
+    ],
+    "errorMessage": "Debes seleccionar un color"
+  }
+]

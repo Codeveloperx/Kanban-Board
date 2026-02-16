@@ -1,7 +1,7 @@
-import type { List } from "../../types/List";
+import type { CreateData, List } from "../../types/List";
 
 export interface ListState {
-  list: List[];
+  lists: List[];
 }
 
 export const LIST_ACTIONS = {
@@ -11,10 +11,10 @@ export const LIST_ACTIONS = {
 } as const;
 
 export type ListAction =
-  | { type: typeof LIST_ACTIONS.CREATE; payload: List }
+  | { type: typeof LIST_ACTIONS.CREATE; payload: CreateData }
   | { type: typeof LIST_ACTIONS.UPDATE; payload: List }
   | { type: typeof LIST_ACTIONS.DELETE; payload: string };
 
 export const initialListState: ListState = {
-  list: [],
+  lists: [],
 };

@@ -19,11 +19,10 @@ const Form = ({
   onChange,
 }: FormProps) => {
   const [formValues, setFormValues] = useState<Record<string, unknown>>(values);
-  
-  //FIXME: VALIDAR O AGREGAR LA FUNCIONALIDAD PARA CUANDO SE REQUIERA PRECARGAR EL FORMULARIO: MODE -EDIT
+
   const memoizedFields = useMemo(
     () => fields.map((field) => ({ required: false, hidden: false, ...field })),
-    [fields]
+    [fields],
   );
 
   const handleChange = useCallback(
@@ -34,7 +33,7 @@ const Form = ({
         return updated;
       });
     },
-    [onChange]
+    [onChange],
   );
 
   const inputRefCallbacks = useMemo(() => {

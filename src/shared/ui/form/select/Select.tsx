@@ -1,7 +1,6 @@
 import { memo } from "react";
 
 interface SelectProps {
-  id: string;
   name: string;
   value: string;
   options: string[];
@@ -10,11 +9,11 @@ interface SelectProps {
 }
 
 export const Select = memo(
-  ({ id, name, value, options, onChange, inputRef }: SelectProps) => {
+  ({ name, value, options, onChange, inputRef }: SelectProps) => {
     return (
       <select
         ref={inputRef}
-        id={id}
+        id={name}
         name={name}
         value={value || ""}
         onChange={(e) => onChange(e.target.value)}

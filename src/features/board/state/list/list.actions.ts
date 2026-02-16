@@ -1,8 +1,8 @@
 import { LIST_ACTIONS } from "./list.type";
 
-import type { List } from "../../types/List";
+import type { CreateData, List } from "../../types/List";
 
-export const addList = (data: List) => ({
+export const addList = (data: CreateData) => ({
   type: LIST_ACTIONS.CREATE,
   payload: data,
 });

@@ -16,7 +16,6 @@ export interface FieldProps {
 const Fields: Record<string, (props: FieldProps) => React.ReactNode> = {
   text: ({ field, value, onChange, inputRef }) => (
     <Text
-      id={field.name}
       name={field.name}
       placeholder={field.placeholder}
       value={value as string}
@@ -30,6 +29,7 @@ const Fields: Record<string, (props: FieldProps) => React.ReactNode> = {
       ref={inputRef as (el: HTMLInputElement | null) => void}
       id={field.name}
       name={field.name}
+      autoComplete="off"
       type="email"
       placeholder={field.placeholder}
       value={(value as string) || ""}
@@ -40,7 +40,6 @@ const Fields: Record<string, (props: FieldProps) => React.ReactNode> = {
 
   select: ({ field, value, onChange, inputRef }) => (
     <Select
-      id={field.name}
       name={field.name}
       value={value as string}
       options={field.options || []}
@@ -51,7 +50,6 @@ const Fields: Record<string, (props: FieldProps) => React.ReactNode> = {
 
   color: ({ field, value, onChange }) => (
     <ColorPicker
-      id={field.name}
       name={field.name}
       value={value as string}
       colors={field.options || COLORS}

@@ -1,10 +1,10 @@
 import { Card } from "./Card";
 import { EmptyBoard } from "./EmptyBoard";
+import { getActiveBoards } from "../../utils/getActiveBoards";
 import { ROUTES } from "@/app/router/routes";
 import { useNavigation } from "@/shared/hooks";
 
 import type { Board as BoardType } from "../../types/Board";
-import { getActiveBoards } from "../../utils/getActiveBoards";
 
 interface BoardProps {
   boards: BoardType[];

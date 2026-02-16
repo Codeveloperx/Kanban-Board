@@ -8,5 +8,5 @@ export const useList = () => {
     throw new Error("AppContext(List) must be used within a BoardProvider");
   }
 
-  return { state: context.list, dispatch: context.dispatchLists };
+  return { state: context.lists, dispatch: context.dispatchLists };
 };

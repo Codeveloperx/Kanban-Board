@@ -30,6 +30,7 @@ export const NumberInput = memo(
         type="number"
         value={value || ""}
         placeholder={placeholder}
+        autoComplete="off"
         min={min}
         max={max}
         onChange={(e) => onChange(Number(e.target.value))}
@@ -42,5 +43,5 @@ export const NumberInput = memo(
         }}
       />
     );
-  }
+  },
 );

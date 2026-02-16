@@ -15,7 +15,10 @@ export const FormField = memo(
   ({ field, value, error, onChange, inputRef }: FormFieldProps) => {
     return (
       <div className={`flex flex-col ${field.hidden ? "hidden" : ""}`}>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label
+          className="block text-sm font-medium text-gray-700 mb-2"
+          htmlFor={field.name}
+        >
           {field.label}
           {field.required && <span className="text-red-500 ml-1">*</span>}
         </label>
@@ -30,5 +33,5 @@ export const FormField = memo(
         {error && <span className="text-red-500 text-xs mt-1">{error}</span>}
       </div>
     );
-  }
+  },
 );

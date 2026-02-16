@@ -1,7 +1,6 @@
 import { memo } from "react";
 
 interface TextProps {
-  id: string;
   name: string;
   value: string;
   placeholder?: string;
@@ -10,12 +9,13 @@ interface TextProps {
 }
 
 export const Text = memo(
-  ({ id, name, value, placeholder, onChange, inputRef }: TextProps) => {
+  ({ name, value, placeholder, onChange, inputRef }: TextProps) => {
     return (
       <input
         ref={inputRef}
-        id={id}
+        id={name}
         name={name}
+        autoComplete="off"
         type="text"
         value={value || ""}
         placeholder={placeholder}
@@ -23,7 +23,7 @@ export const Text = memo(
         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
     );
-  }
+  },
 );
 
 Text.displayName = "Text";

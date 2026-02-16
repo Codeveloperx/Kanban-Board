@@ -8,5 +8,5 @@ export const useTask = () => {
     throw new Error("AppContext(Task) must be used within a BoardProvider");
   }
 
-  return { state: context.task, dispatch: context.dispatchTask };
+  return { state: context.tasks, dispatch: context.dispatchTasks };
 };

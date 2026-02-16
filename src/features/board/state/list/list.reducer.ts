@@ -10,9 +10,14 @@ export const listReducer = (
       const newList = {
         ...createBaseEntity(),
         ...action.payload,
+        position: state.lists.length,
+        collapsed: false,
       };
 
-      return { list: [...state.list, newList] };
+      return {
+        ...state,
+        lists: [...state.lists, newList],
+      };
     }
     default:
       return state;

@@ -1,4 +1,6 @@
 import ListOptions from "./ListOptions";
+
+import type { Actions } from "../../types/Actions";
 import type { LucideIcon } from "lucide-react";
 
 interface PropsTypes {
@@ -6,7 +8,7 @@ interface PropsTypes {
   amountTask?: number;
   color: string | undefined;
   icon: LucideIcon;
-  options?: string[];
+  options: Actions[];
 }
 
 export const ListHeader = ({
@@ -14,6 +16,7 @@ export const ListHeader = ({
   amountTask = 0,
   color,
   icon: Icon,
+  options,
 }: PropsTypes) => {
   return (
     <section>
@@ -39,7 +42,7 @@ export const ListHeader = ({
               {amountTask}
             </span>
           </div>
-          <ListOptions isCollapsed onCollapsed={() => {}} />
+          <ListOptions onCollapsed={() => {}} actions={options} />
         </div>
       </div>
       <div

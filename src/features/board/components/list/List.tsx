@@ -1,33 +1,34 @@
 import { Button } from "@/shared/ui/button";
 import { getTaskByListId } from "../../utils/getTaskByListId";
-import { GripVertical } from "lucide-react";
+import { GripVertical} from "lucide-react";
 import { ListHeader } from "./ListHeader";
 import { useTask } from "../../hooks/task";
 
+import type { Actions } from "../../types/Actions";
 import type { List as ListType } from "@/features/board/types/List";
 
 interface ListProps {
   list: ListType;
+  actions?: Actions[];
 }
 
-export const List = (props: ListProps) => {
+export const List = ({ list, actions = [] }: ListProps) => {
   const { state } = useTask();
-  const tasks = getTaskByListId(state.tasks, props.list.id);
 
+  const tasks = getTaskByListId(state.tasks, list.id);
   return (
-    <div className="w-64 p-4 flex-none bg-gray-100 rounded-lg overflow-hidden transition-all duration-200 shadow-md flex flex-col max-h-full">
+    <div className="p-4 bg-gray-100">
       <ListHeader
-        title={props.list.title}
+        options={actions}
+        color={list.color}
+        title={list.title}
         amountTask={tasks.length}
-        color={props.list.color}
         icon={GripVertical}
       />
-
-      <div className="p-4 border-2 border-amber-600 w-auto">
-        <div>Content</div>
-      </div>
-
-      <Button variant="add" className="w-full mt-2" onClick={() => {}}>
+      <div className="p-4">Content</div>
+      <div className="p-4">Content</div>
+      <div className="p-4">Content</div>
+      <Button variant="add" className="w-full mt-2">
         Agregar tarea
       </Button>
     </div>

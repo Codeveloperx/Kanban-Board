@@ -9,3 +9,4 @@ export interface List extends BaseEntity {
 }
 
 export type CreateData = Omit<List, "id" | "createdAt" | "updatedAt">;
+export type UpdatedData = Omit<List, "createdAt">;

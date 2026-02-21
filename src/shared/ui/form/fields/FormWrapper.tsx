@@ -17,7 +17,7 @@ type FormWrapperProps<T extends object> = {
 
 function FormWrapperInner<T extends object>(
   { fields, data = {} }: FormWrapperProps<T>,
-  ref: React.Ref<FormHandle<T>>
+  ref: React.Ref<FormHandle<T>>,
 ) {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const valuesRef = useRef<Partial<T>>(data);
@@ -53,9 +53,21 @@ function FormWrapperInner<T extends object>(
   useImperativeHandle(
     ref,
     () => ({
-      get: () => (validate() ? (valuesRef.current as T) : null),
+          get: () => {
+      if (!validate()) return null;
+      
+      // Solo devolver los campos definidos en el formulario
+      const filtered = memoizedFields.reduce((acc, field) => {
+        const key = field.name as keyof T;
+        acc[key] = valuesRef.current[key];
+        return acc;
+      }, {} as Partial<T>);
+
+      return filtered as T;
+    },
+      // get: () => (validate() ? (valuesRef.current as T) : null),
       clear: () => {
-        valuesRef.current = data;
+        valuesRef.current = {};
         setErrors({});
       },
       focus: (name: string) => {
@@ -65,7 +77,7 @@ function FormWrapperInner<T extends object>(
         }
       },
     }),
-    [validate, data]
+    [validate, data],
   );
 
   return (
@@ -80,7 +92,7 @@ function FormWrapperInner<T extends object>(
 }
 
 const FormWrapper = forwardRef(FormWrapperInner) as <T extends object>(
-  props: FormWrapperProps<T> & { ref?: React.Ref<FormHandle<T>> }
+  props: FormWrapperProps<T> & { ref?: React.Ref<FormHandle<T>> },
 ) => React.ReactElement;
 
 export default FormWrapper;

@@ -1,4 +1,4 @@
-import type { CreateData, List } from "../../types/List";
+import type { CreateData, List, UpdatedData } from "../../types/List";
 
 export interface ListState {
   lists: List[];
@@ -12,9 +12,9 @@ export const LIST_ACTIONS = {
 
 export type ListAction =
   | { type: typeof LIST_ACTIONS.CREATE; payload: CreateData }
-  | { type: typeof LIST_ACTIONS.UPDATE; payload: List }
+  | { type: typeof LIST_ACTIONS.UPDATE; payload: UpdatedData }
   | { type: typeof LIST_ACTIONS.DELETE; payload: string };
 
 export const initialListState: ListState = {
-  lists: [],
+  lists: []
 };

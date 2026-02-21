@@ -1,23 +1,29 @@
 import { Button } from "../../button";
 import { Suspense, type RefObject } from "react";
 import Dialog from "../../modals/Dialog";
-import fields from "@/forms/create_list.json";
 import FormWrapper from "../fields/FormWrapper";
 import Loading from "../../loading/Loading";
 
 import type { Field, FormHandle } from "@/shared/types";
+import type { List } from "@/features/board/types/List";
 
 interface PropsTypes {
   onConfirm: () => void;
   onCancel: () => void;
-  formRef: RefObject<FormHandle<Record<string, unknown>> | null>;
+  form: Field[];
+  formRef: RefObject<FormHandle<List> | null>;
+  values?: List;
 }
 
 export const CreateItemForm = (props: PropsTypes) => {
   return (
     <Dialog onCancel={props.onCancel}>
       <Suspense fallback={<Loading.Overlay />}>
-        <FormWrapper ref={props.formRef} fields={fields as Field[]} />
+        <FormWrapper
+          ref={props.formRef}
+          fields={props.form}
+          data={props.values}
+        />
       </Suspense>
       <div className="flex gap-2 mt-2 p-4">
         <Button variant="primary" className="w-full" onClick={props.onConfirm}>

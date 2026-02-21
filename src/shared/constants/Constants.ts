@@ -10,5 +10,5 @@ export const KEY_STORAGE = "kanban_boards";
 export const KEY_ONBOARDING_COMPLETED = "onboardingCompleted";
 export const KEY_MODE = "mode";
 export const KEY_MODE_CREATE = "create";
-export const KEY_MODE_UPDATE = "update";
+export const KEY_MODE_EDIT = "edit";
 export const KEY_ID = "id";

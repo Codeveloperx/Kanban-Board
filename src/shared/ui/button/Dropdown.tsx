@@ -6,12 +6,17 @@ import { useOpen } from "@/shared/hooks";
 
 interface DropdownProps {
   actions: Actions[];
+  isList?: boolean;
 }
 
-export const Dropdown = ({ actions }: DropdownProps) => {
+export const Dropdown = ({ actions, isList = false }: DropdownProps) => {
   const { isOpen, onClose, onToggle } = useOpen();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const style = isList
+    ? "hover:bg-white bg-gray-100"
+    : "bg-white hover:bg-gray-100 ";
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -37,10 +42,11 @@ export const Dropdown = ({ actions }: DropdownProps) => {
       <button
         ref={buttonRef}
         onClick={toggleDropdown}
-        className="absolute -top-4 -right-2 text-gray-500 hover:text-gray-900 bg-white border-transparent hover:bg-gray-100 rounded-lg p-1.5  transition-colors cursor-pointer"
+        className={`absolute -top-4 -right-2 text-gray-500 ${style} border-transparent hover:bg-gray-100 rounded-lg p-1.5 transition-colors cursor-pointer`}
         type="button"
         aria-expanded={isOpen}
         aria-haspopup="true"
+        title="More options"
       >
         <span className="sr-only">Open dropdown</span>
         <MoreHorizontal className="w-5 h-5" />
@@ -61,7 +67,7 @@ export const Dropdown = ({ actions }: DropdownProps) => {
                       action.onAction();
                       onClose();
                     }}
-                    className={`inline-flex gap-2 items-center w-full p-2 hover:bg-gray-100 rounded-md text-left transition-colors cursor-pointer ${
+                    className={`inline-flex gap-2 items-center w-full p-2 hover:text-gray-900 rounded-md text-left transition-colors cursor-pointer ${
                       action.isDanger ? "text-red-600" : "hover:text-gray-900"
                     }`}
                   >

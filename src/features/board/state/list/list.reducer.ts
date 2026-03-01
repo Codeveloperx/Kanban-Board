@@ -19,6 +19,20 @@ export const listReducer = (
         lists: [...state.lists, newList],
       };
     }
+
+    case LIST_ACTIONS.UPDATE: {
+      const updatedList = state.lists.map((list) =>
+        list.id === action.payload.id
+          ? { ...list, ...action.payload, updatedAt: new Date().toISOString() }
+          : list,
+      );
+
+      return {
+        ...state,
+        lists: updatedList,
+      };
+    }
+
     default:
       return state;
   }

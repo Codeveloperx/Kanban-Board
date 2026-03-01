@@ -1,6 +1,6 @@
 import { LIST_ACTIONS } from "./list.type";
 
-import type { CreateData, List } from "../../types/List";
+import type { CreateData, UpdatedData } from "../../types/List";
 
 export const addList = (data: CreateData) => ({
   type: LIST_ACTIONS.CREATE,
@@ -12,7 +12,7 @@ export const deleteList = (id: string) => ({
   payload: id,
 });
 
-export const updateList = (data: List) => ({
+export const updateList = (data: UpdatedData) => ({
   type: LIST_ACTIONS.UPDATE,
   payload: data,
 });

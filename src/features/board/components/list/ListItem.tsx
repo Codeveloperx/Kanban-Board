@@ -18,11 +18,12 @@ export const ListItem = ({
   list,
   isEditing,
   onEdit,
-  onClose
+  onClose,
 }: ListItemProps) => {
   const { updateList } = useListActions();
 
-  const handleConfirm = useCallback((values: ListType) => {
+  const handleUpdate = useCallback(
+    (values: ListType) => {
       updateList({ ...values });
     },
 
@@ -40,7 +41,7 @@ export const ListItem = ({
         <ListForm
           mode={KEY_MODE_EDIT}
           values={list}
-          onConfirm={handleConfirm}
+          onConfirm={handleUpdate}
           onClose={onClose}
         />
       ) : (

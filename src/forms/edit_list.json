@@ -1,5 +1,10 @@
 [
   {
+    "name": "id",
+    "type": "text",
+    "hidden": true
+  },
+  {
     "name": "title",
     "label": "Nombre de la lista",
     "type": "text",

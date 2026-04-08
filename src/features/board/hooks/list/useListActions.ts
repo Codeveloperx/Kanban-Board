@@ -1,4 +1,9 @@
-import { addList, deleteList, updateList } from "../../state/list/list.actions";
+import {
+  addList,
+  collapsedList,
+  deleteList,
+  updateList,
+} from "../../state/list/list.actions";
 import { useList } from "./useList";
 
 import type { CreateData, UpdatedData } from "../../types/List";
@@ -10,5 +15,6 @@ export const useListActions = () => {
     addList: (payload: CreateData) => dispatch(addList(payload)),
     updateList: (payload: UpdatedData) => dispatch(updateList(payload)),
     deleteList: (payload: string) => dispatch(deleteList(payload)),
+    collapsedList: (payload: string) => dispatch(collapsedList(payload)),
   };
 };

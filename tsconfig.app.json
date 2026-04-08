@@ -25,5 +25,5 @@
     "noUncheckedSideEffectImports": true
   },
     "extends": "./tsconfig.json",
-  "include": ["src"]
+  "include": ["src", "src/features/board/utils/filterData.ts"]
 }

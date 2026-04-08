@@ -12,13 +12,15 @@ interface ListItemProps {
   isEditing: boolean;
   onEdit: (id: string) => void;
   onClose: () => void;
+  onCollapsed: (id: string) => void;
 }
 
-export const ListItem = ({
+export const ListExpand = ({
   list,
   isEditing,
   onEdit,
   onClose,
+  onCollapsed,
 }: ListItemProps) => {
   const { updateList } = useListActions();
 
@@ -35,18 +37,28 @@ export const ListItem = ({
     [list.id, onEdit],
   );
 
+  const collapsedListHandler = useCallback(() => {
+    onCollapsed(list.id);
+  }, [list.id, onCollapsed]);
+
   return (
-    <div className="w-64">
-      {isEditing ? (
-        <ListForm
-          mode={KEY_MODE_EDIT}
-          values={list}
-          onConfirm={handleUpdate}
-          onClose={onClose}
-        />
-      ) : (
-        <List list={list} actions={actions} />
-      )}
+    <div className="flex w-64 gap-4 items-start fade-in">
+      <div className="w-64">
+        {isEditing ? (
+          <ListForm
+            mode={KEY_MODE_EDIT}
+            values={list}
+            onConfirm={handleUpdate}
+            onClose={onClose}
+          />
+        ) : (
+          <List
+            list={list}
+            actions={actions}
+            onCollapsed={collapsedListHandler}
+          />
+        )}
+      </div>
     </div>
   );
 };

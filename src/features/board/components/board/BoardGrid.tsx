@@ -1,6 +1,5 @@
 import { Card } from "./Card";
 import { EmptyBoard } from "./EmptyBoard";
-import { getActiveBoards } from "../../utils/getActiveBoards";
 import { ROUTES } from "@/app/router/routes";
 import { useNavigation } from "@/shared/hooks";
 
@@ -10,10 +9,8 @@ interface BoardProps {
   boards: BoardType[];
 }
 
-const BoardGrid = (props: BoardProps) => {
+const BoardGrid = ({ boards }: BoardProps) => {
   const { goTo } = useNavigation();
-
-  const boards = getActiveBoards(props.boards);
 
   const onCreateBoard = () => goTo(ROUTES.NEW_BOARD);
 

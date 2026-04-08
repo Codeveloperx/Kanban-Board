@@ -33,6 +33,19 @@ export const listReducer = (
       };
     }
 
+    case LIST_ACTIONS.COLLAPSED: {
+      const updatedList = state.lists.map((list) =>
+        list.id === action.payload
+          ? { ...list, collapsed: !list.collapsed }
+          : list,
+      );
+
+      return {
+        ...state,
+        lists: updatedList,
+      };
+    }
+
     default:
       return state;
   }

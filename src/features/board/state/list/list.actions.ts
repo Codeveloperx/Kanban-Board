@@ -16,3 +16,8 @@ export const updateList = (data: UpdatedData) => ({
   type: LIST_ACTIONS.UPDATE,
   payload: data,
 });
+
+export const collapsedList = (id: string) => ({
+  type: LIST_ACTIONS.COLLAPSED,
+  payload: id,
+});

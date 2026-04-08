@@ -1,11 +1,10 @@
-import { getActiveBoards } from "../../utils/getActiveBoards";
 import { Outlet } from "react-router-dom";
-import { useBoard } from "@/features/board/hooks/board/useBoard";
+// import { useBoard } from "@/features/board/hooks/board/useBoard";
 import BoardGrid from "@/features/board/components/board/BoardGrid";
+import { boardFilter } from "../../utils/filterData";
 
 const BoardsPage = () => {
-  const { state } = useBoard();
-  const boards = getActiveBoards(state.boards);
+  const boards = boardFilter.getActive();
 
   return (
     <div className="p-6">
@@ -20,7 +19,7 @@ const BoardsPage = () => {
         </div>
       </div>
 
-      <BoardGrid boards={state.boards} />
+      <BoardGrid boards={boards} />
 
       <Outlet />
     </div>

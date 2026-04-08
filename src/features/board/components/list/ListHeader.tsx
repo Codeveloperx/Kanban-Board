@@ -9,6 +9,7 @@ interface PropsTypes {
   color: string | undefined;
   icon: LucideIcon;
   options: Actions[];
+  onCollapsed?: () => void;
 }
 
 export const ListHeader = ({
@@ -17,6 +18,7 @@ export const ListHeader = ({
   color,
   icon: Icon,
   options,
+  onCollapsed,
 }: PropsTypes) => {
   return (
     <section>
@@ -42,7 +44,7 @@ export const ListHeader = ({
               {amountTask}
             </span>
           </div>
-          <ListOptions onCollapsed={() => {}} actions={options} />
+          <ListOptions onCollapsed={onCollapsed} actions={options} />
         </div>
       </div>
       <div

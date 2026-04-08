@@ -1,4 +1,5 @@
-import { storage } from "../utils/boardStorage";
+import { boardFilter } from "../utils/filterData";
+
 import type { LoaderFunctionArgs } from "react-router-dom";
 
 export const boardDetailLoader = ({ params }: LoaderFunctionArgs) => {
@@ -8,7 +9,7 @@ export const boardDetailLoader = ({ params }: LoaderFunctionArgs) => {
     throw new Error("Board id missing");
   }
 
-  const board = storage.boards.loadById(boardId);
+  const board = boardFilter.getById(boardId);
 
   if (!board) {
     throw new Error("Board not found");

@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-// import { useBoard } from "@/features/board/hooks/board/useBoard";
+import { useBoard } from "../../hooks/board";
 import BoardGrid from "@/features/board/components/board/BoardGrid";
-import { boardFilter } from "../../utils/filterData";
 
 const BoardsPage = () => {
-  const boards = boardFilter.getActive();
+  const { state } = useBoard();
+  const boards = state.boards.filter((board) => board.active);
 
   return (
     <div className="p-6">

@@ -6,6 +6,7 @@ export interface List extends BaseEntity {
   position?: number;
   collapsed?: boolean;
   color?: string;
+  active?: boolean;
 }
 
 export type CreateData = Omit<List, "id" | "createdAt" | "updatedAt">;

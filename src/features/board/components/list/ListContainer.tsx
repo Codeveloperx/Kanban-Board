@@ -30,7 +30,7 @@ export const ListContainer = ({ list }: ListContainerProps) => {
 
   return (
     <div
-      style={{ backgroundColor: list.color }}
+      style={{ backgroundColor: isOpen ? list.color : "transparent" }}
       className={`
         flex flex-col rounded-lg overflow-hidden shadow-md
         transition-[width,max-height] duration-300 ease-in-out

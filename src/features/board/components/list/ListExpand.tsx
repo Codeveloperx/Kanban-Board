@@ -1,11 +1,12 @@
 import { List } from "./List";
 import { ListForm } from "./ListForm";
-import { SquarePen } from "lucide-react";
+import { SquarePen, Trash } from "lucide-react";
 import { useCallback, useMemo } from "react";
 import { useListActions } from "../../hooks/list";
 import { KEY_MODE_EDIT } from "@/shared/constants/Constants";
 
 import type { List as ListType } from "../../types/List";
+import type { Actions } from "../../types/Actions";
 
 interface ListItemProps {
   list: ListType;
@@ -22,7 +23,7 @@ export const ListExpand = ({
   onClose,
   onCollapsed,
 }: ListItemProps) => {
-  const { updateList } = useListActions();
+  const { updateList, deleteList } = useListActions();
 
   const handleUpdate = useCallback(
     (values: ListType) => {
@@ -32,9 +33,17 @@ export const ListExpand = ({
     [list.id, list.boardId, updateList],
   );
 
-  const actions = useMemo(
-    () => [{ name: "Edit", icon: SquarePen, onAction: () => onEdit(list.id) }],
-    [list.id, onEdit],
+  const actions: Actions[] = useMemo(
+    () => [
+      { name: "Edit", icon: SquarePen, onAction: () => onEdit(list.id) },
+      {
+        name: "Delete",
+        icon: Trash,
+        isDanger: true,
+        onAction: () => deleteList(list.id),
+      },
+    ],
+    [list.id, onEdit, deleteList],
   );
 
   const collapsedListHandler = useCallback(() => {

@@ -67,8 +67,10 @@ export const Dropdown = ({ actions, isList = false }: DropdownProps) => {
                       action.onAction();
                       onClose();
                     }}
-                    className={`inline-flex gap-2 items-center w-full p-2 hover:text-gray-900 rounded-md text-left transition-colors cursor-pointer ${
-                      action.isDanger ? "text-red-600" : "hover:text-gray-900"
+                    className={`inline-flex gap-2 items-center w-full p-2 rounded-md text-left transition-colors cursor-pointer ${
+                      action.isDanger
+                        ? "text-red-500 hover:text-red-600"
+                        : "hover:text-gray-900"
                     }`}
                   >
                     {Icon && <Icon className="h-3.5 w-3.5" />}

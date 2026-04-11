@@ -12,8 +12,6 @@ const ListWrapper = ({ boardId }: ListWrapperProps) => {
     (list) => list.boardId === boardId && list.active,
   );
 
-
-  console.log('List -> ', lists)
   return (
     <div className="h-full overflow-x-auto overflow-y-hidden">
       <div className="flex items-start gap-4 px-6 h-full w-max">

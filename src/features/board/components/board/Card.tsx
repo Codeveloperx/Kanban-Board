@@ -38,7 +38,7 @@ export const Card = (props: CardProps) => {
   return (
     <div
       style={{ backgroundColor: props.board.color }}
-      className="relative group bg-white max-w-xs w-full p-6 border border-gray-200 rounded-lg shadow-sm hover:-translate-y-2 hover:shadow-2xl"
+      className="relative group bg-white max-w-xs w-full p-6 border border-gray-200 rounded-lg shadow-sm hover:shadow-2xl"
     >
       <CardHeader initials={initials} onSave={() => {}} actions={actions} />
       <CardContent board={props.board} />

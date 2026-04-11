@@ -4,7 +4,8 @@ import { ListHeader } from "./ListHeader";
 
 import type { Actions } from "../../types/Actions";
 import type { List as ListType } from "@/features/board/types/List";
-import { getTaskByListId } from "../../utils/filterData";
+import { useTask } from "../../hooks/task";
+// import { getTaskByListId } from "../../utils/filterData";
 
 interface ListProps {
   list: ListType;
@@ -13,7 +14,10 @@ interface ListProps {
 }
 
 export const List = ({ list, onCollapsed, actions = [] }: ListProps) => {
-  const tasks = getTaskByListId(list.id);
+  // const tasks = getTaskByListId(list.id);
+  const { state } = useTask();
+
+  const tasks = state.tasks.filter((task) => task.listId === list.id);
   return (
     <div className="p-4 bg-gray-100">
       <ListHeader

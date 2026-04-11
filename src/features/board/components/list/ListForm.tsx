@@ -27,7 +27,7 @@ export const ListForm = ({
     const formValues = formRef.current?.get();
     if (!formValues) return;
 
-    onConfirm({ ...formValues });
+    onConfirm({ ...formValues, active: true });
     formRef.current?.clear();
     onClose();
   };

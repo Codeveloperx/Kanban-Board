@@ -33,6 +33,23 @@ export const listReducer = (
       };
     }
 
+    case LIST_ACTIONS.DELETE: {
+      const updatedList = state.lists.map((list) =>
+        list.id === action.payload
+          ? {
+            ...list,
+            active: false,
+              updatedAt: new Date().toISOString(),
+            }
+          : list,
+      );
+
+      return {
+        ...state,
+        lists: updatedList,
+      };
+    }
+
     case LIST_ACTIONS.COLLAPSED: {
       const updatedList = state.lists.map((list) =>
         list.id === action.payload

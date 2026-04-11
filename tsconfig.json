@@ -5,19 +5,14 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@/assets/*": ["src/assets/*"],
-      "@/app/*": ["src/app/*"],
-      "@/features/*": ["src/features/*"],
-      "@/layout/*": ["src/layout/*"],
-      "@/shared/*": ["src/shared/*"],
-      "@/forms/*": ["src/forms/*"]
-      // "@/components/*": ["src/shared/ui/*"],
-      // "@/hooks/*": ["src/shared/hooks/*"],
-      // "@/types/*": ["src/shared/types/*"],
-      // "@/utils/*": ["src/shared/utils/*"]
+      "@/*": ["./src/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/app/*": ["./src/app/*"],
+      "@/features/*": ["./src/features/*"],
+      "@/layout/*": ["./src/layout/*"],
+      "@/shared/*": ["./src/shared/*"],
+      "@/forms/*": ["./src/forms/*"]
     }
   }
 }

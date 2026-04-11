@@ -4,7 +4,7 @@ import ListOptions from "./ListOptions";
 import type { List } from "../../types/List";
 
 type PropsTypes = {
-  values: List | null;
+  values: List;
   onExpand: () => void;
   isCollapsed: boolean;
 };
@@ -27,13 +27,12 @@ const ListCollapsed = (props: PropsTypes) => {
             <span
               className="
             [writing-mode:vertical-rl]
-            max-h-[200px]
+            max-h-[120px]
             overflow-hidden
-          text-ellipsis
-          text-center
+          text-center wrap-break-word truncate min-w-0
           "
             >
-              {props.values?.title}
+              {props.values.title}
             </span>
           </div>
 
